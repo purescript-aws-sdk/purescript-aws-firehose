@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -47,8 +46,8 @@ instance encodeBucketARN :: Encode BucketARN where encode = genericEncode option
 
 -- | <p>Describes hints for the buffering to perform before delivering data to the destination. Please note that these options are treated as hints, and therefore Kinesis Firehose may choose to use different values when it is optimal.</p>
 newtype BufferingHints = BufferingHints 
-  { "SizeInMBs" :: NullOrUndefined (SizeInMBs)
-  , "IntervalInSeconds" :: NullOrUndefined (IntervalInSeconds)
+  { "SizeInMBs" :: Maybe (SizeInMBs)
+  , "IntervalInSeconds" :: Maybe (IntervalInSeconds)
   }
 derive instance newtypeBufferingHints :: Newtype BufferingHints _
 derive instance repGenericBufferingHints :: Generic BufferingHints _
@@ -58,20 +57,20 @@ instance encodeBufferingHints :: Encode BufferingHints where encode = genericEnc
 
 -- | Constructs BufferingHints from required parameters
 newBufferingHints :: BufferingHints
-newBufferingHints  = BufferingHints { "IntervalInSeconds": (NullOrUndefined Nothing), "SizeInMBs": (NullOrUndefined Nothing) }
+newBufferingHints  = BufferingHints { "IntervalInSeconds": Nothing, "SizeInMBs": Nothing }
 
 -- | Constructs BufferingHints's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBufferingHints' :: ( { "SizeInMBs" :: NullOrUndefined (SizeInMBs) , "IntervalInSeconds" :: NullOrUndefined (IntervalInSeconds) } -> {"SizeInMBs" :: NullOrUndefined (SizeInMBs) , "IntervalInSeconds" :: NullOrUndefined (IntervalInSeconds) } ) -> BufferingHints
-newBufferingHints'  customize = (BufferingHints <<< customize) { "IntervalInSeconds": (NullOrUndefined Nothing), "SizeInMBs": (NullOrUndefined Nothing) }
+newBufferingHints' :: ( { "SizeInMBs" :: Maybe (SizeInMBs) , "IntervalInSeconds" :: Maybe (IntervalInSeconds) } -> {"SizeInMBs" :: Maybe (SizeInMBs) , "IntervalInSeconds" :: Maybe (IntervalInSeconds) } ) -> BufferingHints
+newBufferingHints'  customize = (BufferingHints <<< customize) { "IntervalInSeconds": Nothing, "SizeInMBs": Nothing }
 
 
 
 -- | <p>Describes the Amazon CloudWatch logging options for your delivery stream.</p>
 newtype CloudWatchLoggingOptions = CloudWatchLoggingOptions 
-  { "Enabled" :: NullOrUndefined (BooleanObject)
-  , "LogGroupName" :: NullOrUndefined (LogGroupName)
-  , "LogStreamName" :: NullOrUndefined (LogStreamName)
+  { "Enabled" :: Maybe (BooleanObject)
+  , "LogGroupName" :: Maybe (LogGroupName)
+  , "LogStreamName" :: Maybe (LogStreamName)
   }
 derive instance newtypeCloudWatchLoggingOptions :: Newtype CloudWatchLoggingOptions _
 derive instance repGenericCloudWatchLoggingOptions :: Generic CloudWatchLoggingOptions _
@@ -81,12 +80,12 @@ instance encodeCloudWatchLoggingOptions :: Encode CloudWatchLoggingOptions where
 
 -- | Constructs CloudWatchLoggingOptions from required parameters
 newCloudWatchLoggingOptions :: CloudWatchLoggingOptions
-newCloudWatchLoggingOptions  = CloudWatchLoggingOptions { "Enabled": (NullOrUndefined Nothing), "LogGroupName": (NullOrUndefined Nothing), "LogStreamName": (NullOrUndefined Nothing) }
+newCloudWatchLoggingOptions  = CloudWatchLoggingOptions { "Enabled": Nothing, "LogGroupName": Nothing, "LogStreamName": Nothing }
 
 -- | Constructs CloudWatchLoggingOptions's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCloudWatchLoggingOptions' :: ( { "Enabled" :: NullOrUndefined (BooleanObject) , "LogGroupName" :: NullOrUndefined (LogGroupName) , "LogStreamName" :: NullOrUndefined (LogStreamName) } -> {"Enabled" :: NullOrUndefined (BooleanObject) , "LogGroupName" :: NullOrUndefined (LogGroupName) , "LogStreamName" :: NullOrUndefined (LogStreamName) } ) -> CloudWatchLoggingOptions
-newCloudWatchLoggingOptions'  customize = (CloudWatchLoggingOptions <<< customize) { "Enabled": (NullOrUndefined Nothing), "LogGroupName": (NullOrUndefined Nothing), "LogStreamName": (NullOrUndefined Nothing) }
+newCloudWatchLoggingOptions' :: ( { "Enabled" :: Maybe (BooleanObject) , "LogGroupName" :: Maybe (LogGroupName) , "LogStreamName" :: Maybe (LogStreamName) } -> {"Enabled" :: Maybe (BooleanObject) , "LogGroupName" :: Maybe (LogGroupName) , "LogStreamName" :: Maybe (LogStreamName) } ) -> CloudWatchLoggingOptions
+newCloudWatchLoggingOptions'  customize = (CloudWatchLoggingOptions <<< customize) { "Enabled": Nothing, "LogGroupName": Nothing, "LogStreamName": Nothing }
 
 
 
@@ -110,7 +109,7 @@ instance encodeCompressionFormat :: Encode CompressionFormat where encode = gene
 
 -- | <p>Another modification has already happened. Fetch <b>VersionId</b> again and use it to update the destination.</p>
 newtype ConcurrentModificationException = ConcurrentModificationException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeConcurrentModificationException :: Newtype ConcurrentModificationException _
 derive instance repGenericConcurrentModificationException :: Generic ConcurrentModificationException _
@@ -120,20 +119,20 @@ instance encodeConcurrentModificationException :: Encode ConcurrentModificationE
 
 -- | Constructs ConcurrentModificationException from required parameters
 newConcurrentModificationException :: ConcurrentModificationException
-newConcurrentModificationException  = ConcurrentModificationException { "message": (NullOrUndefined Nothing) }
+newConcurrentModificationException  = ConcurrentModificationException { "message": Nothing }
 
 -- | Constructs ConcurrentModificationException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConcurrentModificationException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ConcurrentModificationException
-newConcurrentModificationException'  customize = (ConcurrentModificationException <<< customize) { "message": (NullOrUndefined Nothing) }
+newConcurrentModificationException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ConcurrentModificationException
+newConcurrentModificationException'  customize = (ConcurrentModificationException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>Describes a <code>COPY</code> command for Amazon Redshift.</p>
 newtype CopyCommand = CopyCommand 
   { "DataTableName" :: (DataTableName)
-  , "DataTableColumns" :: NullOrUndefined (DataTableColumns)
-  , "CopyOptions" :: NullOrUndefined (CopyOptions)
+  , "DataTableColumns" :: Maybe (DataTableColumns)
+  , "CopyOptions" :: Maybe (CopyOptions)
   }
 derive instance newtypeCopyCommand :: Newtype CopyCommand _
 derive instance repGenericCopyCommand :: Generic CopyCommand _
@@ -143,12 +142,12 @@ instance encodeCopyCommand :: Encode CopyCommand where encode = genericEncode op
 
 -- | Constructs CopyCommand from required parameters
 newCopyCommand :: DataTableName -> CopyCommand
-newCopyCommand _DataTableName = CopyCommand { "DataTableName": _DataTableName, "CopyOptions": (NullOrUndefined Nothing), "DataTableColumns": (NullOrUndefined Nothing) }
+newCopyCommand _DataTableName = CopyCommand { "DataTableName": _DataTableName, "CopyOptions": Nothing, "DataTableColumns": Nothing }
 
 -- | Constructs CopyCommand's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCopyCommand' :: DataTableName -> ( { "DataTableName" :: (DataTableName) , "DataTableColumns" :: NullOrUndefined (DataTableColumns) , "CopyOptions" :: NullOrUndefined (CopyOptions) } -> {"DataTableName" :: (DataTableName) , "DataTableColumns" :: NullOrUndefined (DataTableColumns) , "CopyOptions" :: NullOrUndefined (CopyOptions) } ) -> CopyCommand
-newCopyCommand' _DataTableName customize = (CopyCommand <<< customize) { "DataTableName": _DataTableName, "CopyOptions": (NullOrUndefined Nothing), "DataTableColumns": (NullOrUndefined Nothing) }
+newCopyCommand' :: DataTableName -> ( { "DataTableName" :: (DataTableName) , "DataTableColumns" :: Maybe (DataTableColumns) , "CopyOptions" :: Maybe (CopyOptions) } -> {"DataTableName" :: (DataTableName) , "DataTableColumns" :: Maybe (DataTableColumns) , "CopyOptions" :: Maybe (CopyOptions) } ) -> CopyCommand
+newCopyCommand' _DataTableName customize = (CopyCommand <<< customize) { "DataTableName": _DataTableName, "CopyOptions": Nothing, "DataTableColumns": Nothing }
 
 
 
@@ -163,13 +162,13 @@ instance encodeCopyOptions :: Encode CopyOptions where encode = genericEncode op
 
 newtype CreateDeliveryStreamInput = CreateDeliveryStreamInput 
   { "DeliveryStreamName" :: (DeliveryStreamName)
-  , "DeliveryStreamType" :: NullOrUndefined (DeliveryStreamType)
-  , "KinesisStreamSourceConfiguration" :: NullOrUndefined (KinesisStreamSourceConfiguration)
-  , "S3DestinationConfiguration" :: NullOrUndefined (S3DestinationConfiguration)
-  , "ExtendedS3DestinationConfiguration" :: NullOrUndefined (ExtendedS3DestinationConfiguration)
-  , "RedshiftDestinationConfiguration" :: NullOrUndefined (RedshiftDestinationConfiguration)
-  , "ElasticsearchDestinationConfiguration" :: NullOrUndefined (ElasticsearchDestinationConfiguration)
-  , "SplunkDestinationConfiguration" :: NullOrUndefined (SplunkDestinationConfiguration)
+  , "DeliveryStreamType" :: Maybe (DeliveryStreamType)
+  , "KinesisStreamSourceConfiguration" :: Maybe (KinesisStreamSourceConfiguration)
+  , "S3DestinationConfiguration" :: Maybe (S3DestinationConfiguration)
+  , "ExtendedS3DestinationConfiguration" :: Maybe (ExtendedS3DestinationConfiguration)
+  , "RedshiftDestinationConfiguration" :: Maybe (RedshiftDestinationConfiguration)
+  , "ElasticsearchDestinationConfiguration" :: Maybe (ElasticsearchDestinationConfiguration)
+  , "SplunkDestinationConfiguration" :: Maybe (SplunkDestinationConfiguration)
   }
 derive instance newtypeCreateDeliveryStreamInput :: Newtype CreateDeliveryStreamInput _
 derive instance repGenericCreateDeliveryStreamInput :: Generic CreateDeliveryStreamInput _
@@ -179,17 +178,17 @@ instance encodeCreateDeliveryStreamInput :: Encode CreateDeliveryStreamInput whe
 
 -- | Constructs CreateDeliveryStreamInput from required parameters
 newCreateDeliveryStreamInput :: DeliveryStreamName -> CreateDeliveryStreamInput
-newCreateDeliveryStreamInput _DeliveryStreamName = CreateDeliveryStreamInput { "DeliveryStreamName": _DeliveryStreamName, "DeliveryStreamType": (NullOrUndefined Nothing), "ElasticsearchDestinationConfiguration": (NullOrUndefined Nothing), "ExtendedS3DestinationConfiguration": (NullOrUndefined Nothing), "KinesisStreamSourceConfiguration": (NullOrUndefined Nothing), "RedshiftDestinationConfiguration": (NullOrUndefined Nothing), "S3DestinationConfiguration": (NullOrUndefined Nothing), "SplunkDestinationConfiguration": (NullOrUndefined Nothing) }
+newCreateDeliveryStreamInput _DeliveryStreamName = CreateDeliveryStreamInput { "DeliveryStreamName": _DeliveryStreamName, "DeliveryStreamType": Nothing, "ElasticsearchDestinationConfiguration": Nothing, "ExtendedS3DestinationConfiguration": Nothing, "KinesisStreamSourceConfiguration": Nothing, "RedshiftDestinationConfiguration": Nothing, "S3DestinationConfiguration": Nothing, "SplunkDestinationConfiguration": Nothing }
 
 -- | Constructs CreateDeliveryStreamInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateDeliveryStreamInput' :: DeliveryStreamName -> ( { "DeliveryStreamName" :: (DeliveryStreamName) , "DeliveryStreamType" :: NullOrUndefined (DeliveryStreamType) , "KinesisStreamSourceConfiguration" :: NullOrUndefined (KinesisStreamSourceConfiguration) , "S3DestinationConfiguration" :: NullOrUndefined (S3DestinationConfiguration) , "ExtendedS3DestinationConfiguration" :: NullOrUndefined (ExtendedS3DestinationConfiguration) , "RedshiftDestinationConfiguration" :: NullOrUndefined (RedshiftDestinationConfiguration) , "ElasticsearchDestinationConfiguration" :: NullOrUndefined (ElasticsearchDestinationConfiguration) , "SplunkDestinationConfiguration" :: NullOrUndefined (SplunkDestinationConfiguration) } -> {"DeliveryStreamName" :: (DeliveryStreamName) , "DeliveryStreamType" :: NullOrUndefined (DeliveryStreamType) , "KinesisStreamSourceConfiguration" :: NullOrUndefined (KinesisStreamSourceConfiguration) , "S3DestinationConfiguration" :: NullOrUndefined (S3DestinationConfiguration) , "ExtendedS3DestinationConfiguration" :: NullOrUndefined (ExtendedS3DestinationConfiguration) , "RedshiftDestinationConfiguration" :: NullOrUndefined (RedshiftDestinationConfiguration) , "ElasticsearchDestinationConfiguration" :: NullOrUndefined (ElasticsearchDestinationConfiguration) , "SplunkDestinationConfiguration" :: NullOrUndefined (SplunkDestinationConfiguration) } ) -> CreateDeliveryStreamInput
-newCreateDeliveryStreamInput' _DeliveryStreamName customize = (CreateDeliveryStreamInput <<< customize) { "DeliveryStreamName": _DeliveryStreamName, "DeliveryStreamType": (NullOrUndefined Nothing), "ElasticsearchDestinationConfiguration": (NullOrUndefined Nothing), "ExtendedS3DestinationConfiguration": (NullOrUndefined Nothing), "KinesisStreamSourceConfiguration": (NullOrUndefined Nothing), "RedshiftDestinationConfiguration": (NullOrUndefined Nothing), "S3DestinationConfiguration": (NullOrUndefined Nothing), "SplunkDestinationConfiguration": (NullOrUndefined Nothing) }
+newCreateDeliveryStreamInput' :: DeliveryStreamName -> ( { "DeliveryStreamName" :: (DeliveryStreamName) , "DeliveryStreamType" :: Maybe (DeliveryStreamType) , "KinesisStreamSourceConfiguration" :: Maybe (KinesisStreamSourceConfiguration) , "S3DestinationConfiguration" :: Maybe (S3DestinationConfiguration) , "ExtendedS3DestinationConfiguration" :: Maybe (ExtendedS3DestinationConfiguration) , "RedshiftDestinationConfiguration" :: Maybe (RedshiftDestinationConfiguration) , "ElasticsearchDestinationConfiguration" :: Maybe (ElasticsearchDestinationConfiguration) , "SplunkDestinationConfiguration" :: Maybe (SplunkDestinationConfiguration) } -> {"DeliveryStreamName" :: (DeliveryStreamName) , "DeliveryStreamType" :: Maybe (DeliveryStreamType) , "KinesisStreamSourceConfiguration" :: Maybe (KinesisStreamSourceConfiguration) , "S3DestinationConfiguration" :: Maybe (S3DestinationConfiguration) , "ExtendedS3DestinationConfiguration" :: Maybe (ExtendedS3DestinationConfiguration) , "RedshiftDestinationConfiguration" :: Maybe (RedshiftDestinationConfiguration) , "ElasticsearchDestinationConfiguration" :: Maybe (ElasticsearchDestinationConfiguration) , "SplunkDestinationConfiguration" :: Maybe (SplunkDestinationConfiguration) } ) -> CreateDeliveryStreamInput
+newCreateDeliveryStreamInput' _DeliveryStreamName customize = (CreateDeliveryStreamInput <<< customize) { "DeliveryStreamName": _DeliveryStreamName, "DeliveryStreamType": Nothing, "ElasticsearchDestinationConfiguration": Nothing, "ExtendedS3DestinationConfiguration": Nothing, "KinesisStreamSourceConfiguration": Nothing, "RedshiftDestinationConfiguration": Nothing, "S3DestinationConfiguration": Nothing, "SplunkDestinationConfiguration": Nothing }
 
 
 
 newtype CreateDeliveryStreamOutput = CreateDeliveryStreamOutput 
-  { "DeliveryStreamARN" :: NullOrUndefined (DeliveryStreamARN)
+  { "DeliveryStreamARN" :: Maybe (DeliveryStreamARN)
   }
 derive instance newtypeCreateDeliveryStreamOutput :: Newtype CreateDeliveryStreamOutput _
 derive instance repGenericCreateDeliveryStreamOutput :: Generic CreateDeliveryStreamOutput _
@@ -199,12 +198,12 @@ instance encodeCreateDeliveryStreamOutput :: Encode CreateDeliveryStreamOutput w
 
 -- | Constructs CreateDeliveryStreamOutput from required parameters
 newCreateDeliveryStreamOutput :: CreateDeliveryStreamOutput
-newCreateDeliveryStreamOutput  = CreateDeliveryStreamOutput { "DeliveryStreamARN": (NullOrUndefined Nothing) }
+newCreateDeliveryStreamOutput  = CreateDeliveryStreamOutput { "DeliveryStreamARN": Nothing }
 
 -- | Constructs CreateDeliveryStreamOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateDeliveryStreamOutput' :: ( { "DeliveryStreamARN" :: NullOrUndefined (DeliveryStreamARN) } -> {"DeliveryStreamARN" :: NullOrUndefined (DeliveryStreamARN) } ) -> CreateDeliveryStreamOutput
-newCreateDeliveryStreamOutput'  customize = (CreateDeliveryStreamOutput <<< customize) { "DeliveryStreamARN": (NullOrUndefined Nothing) }
+newCreateDeliveryStreamOutput' :: ( { "DeliveryStreamARN" :: Maybe (DeliveryStreamARN) } -> {"DeliveryStreamARN" :: Maybe (DeliveryStreamARN) } ) -> CreateDeliveryStreamOutput
+newCreateDeliveryStreamOutput'  customize = (CreateDeliveryStreamOutput <<< customize) { "DeliveryStreamARN": Nothing }
 
 
 
@@ -289,9 +288,9 @@ newtype DeliveryStreamDescription = DeliveryStreamDescription
   , "DeliveryStreamStatus" :: (DeliveryStreamStatus)
   , "DeliveryStreamType" :: (DeliveryStreamType)
   , "VersionId" :: (DeliveryStreamVersionId)
-  , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp)
-  , "LastUpdateTimestamp" :: NullOrUndefined (Types.Timestamp)
-  , "Source" :: NullOrUndefined (SourceDescription)
+  , "CreateTimestamp" :: Maybe (Types.Timestamp)
+  , "LastUpdateTimestamp" :: Maybe (Types.Timestamp)
+  , "Source" :: Maybe (SourceDescription)
   , "Destinations" :: (DestinationDescriptionList)
   , "HasMoreDestinations" :: (BooleanObject)
   }
@@ -303,12 +302,12 @@ instance encodeDeliveryStreamDescription :: Encode DeliveryStreamDescription whe
 
 -- | Constructs DeliveryStreamDescription from required parameters
 newDeliveryStreamDescription :: DeliveryStreamARN -> DeliveryStreamName -> DeliveryStreamStatus -> DeliveryStreamType -> DestinationDescriptionList -> BooleanObject -> DeliveryStreamVersionId -> DeliveryStreamDescription
-newDeliveryStreamDescription _DeliveryStreamARN _DeliveryStreamName _DeliveryStreamStatus _DeliveryStreamType _Destinations _HasMoreDestinations _VersionId = DeliveryStreamDescription { "DeliveryStreamARN": _DeliveryStreamARN, "DeliveryStreamName": _DeliveryStreamName, "DeliveryStreamStatus": _DeliveryStreamStatus, "DeliveryStreamType": _DeliveryStreamType, "Destinations": _Destinations, "HasMoreDestinations": _HasMoreDestinations, "VersionId": _VersionId, "CreateTimestamp": (NullOrUndefined Nothing), "LastUpdateTimestamp": (NullOrUndefined Nothing), "Source": (NullOrUndefined Nothing) }
+newDeliveryStreamDescription _DeliveryStreamARN _DeliveryStreamName _DeliveryStreamStatus _DeliveryStreamType _Destinations _HasMoreDestinations _VersionId = DeliveryStreamDescription { "DeliveryStreamARN": _DeliveryStreamARN, "DeliveryStreamName": _DeliveryStreamName, "DeliveryStreamStatus": _DeliveryStreamStatus, "DeliveryStreamType": _DeliveryStreamType, "Destinations": _Destinations, "HasMoreDestinations": _HasMoreDestinations, "VersionId": _VersionId, "CreateTimestamp": Nothing, "LastUpdateTimestamp": Nothing, "Source": Nothing }
 
 -- | Constructs DeliveryStreamDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeliveryStreamDescription' :: DeliveryStreamARN -> DeliveryStreamName -> DeliveryStreamStatus -> DeliveryStreamType -> DestinationDescriptionList -> BooleanObject -> DeliveryStreamVersionId -> ( { "DeliveryStreamName" :: (DeliveryStreamName) , "DeliveryStreamARN" :: (DeliveryStreamARN) , "DeliveryStreamStatus" :: (DeliveryStreamStatus) , "DeliveryStreamType" :: (DeliveryStreamType) , "VersionId" :: (DeliveryStreamVersionId) , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp) , "LastUpdateTimestamp" :: NullOrUndefined (Types.Timestamp) , "Source" :: NullOrUndefined (SourceDescription) , "Destinations" :: (DestinationDescriptionList) , "HasMoreDestinations" :: (BooleanObject) } -> {"DeliveryStreamName" :: (DeliveryStreamName) , "DeliveryStreamARN" :: (DeliveryStreamARN) , "DeliveryStreamStatus" :: (DeliveryStreamStatus) , "DeliveryStreamType" :: (DeliveryStreamType) , "VersionId" :: (DeliveryStreamVersionId) , "CreateTimestamp" :: NullOrUndefined (Types.Timestamp) , "LastUpdateTimestamp" :: NullOrUndefined (Types.Timestamp) , "Source" :: NullOrUndefined (SourceDescription) , "Destinations" :: (DestinationDescriptionList) , "HasMoreDestinations" :: (BooleanObject) } ) -> DeliveryStreamDescription
-newDeliveryStreamDescription' _DeliveryStreamARN _DeliveryStreamName _DeliveryStreamStatus _DeliveryStreamType _Destinations _HasMoreDestinations _VersionId customize = (DeliveryStreamDescription <<< customize) { "DeliveryStreamARN": _DeliveryStreamARN, "DeliveryStreamName": _DeliveryStreamName, "DeliveryStreamStatus": _DeliveryStreamStatus, "DeliveryStreamType": _DeliveryStreamType, "Destinations": _Destinations, "HasMoreDestinations": _HasMoreDestinations, "VersionId": _VersionId, "CreateTimestamp": (NullOrUndefined Nothing), "LastUpdateTimestamp": (NullOrUndefined Nothing), "Source": (NullOrUndefined Nothing) }
+newDeliveryStreamDescription' :: DeliveryStreamARN -> DeliveryStreamName -> DeliveryStreamStatus -> DeliveryStreamType -> DestinationDescriptionList -> BooleanObject -> DeliveryStreamVersionId -> ( { "DeliveryStreamName" :: (DeliveryStreamName) , "DeliveryStreamARN" :: (DeliveryStreamARN) , "DeliveryStreamStatus" :: (DeliveryStreamStatus) , "DeliveryStreamType" :: (DeliveryStreamType) , "VersionId" :: (DeliveryStreamVersionId) , "CreateTimestamp" :: Maybe (Types.Timestamp) , "LastUpdateTimestamp" :: Maybe (Types.Timestamp) , "Source" :: Maybe (SourceDescription) , "Destinations" :: (DestinationDescriptionList) , "HasMoreDestinations" :: (BooleanObject) } -> {"DeliveryStreamName" :: (DeliveryStreamName) , "DeliveryStreamARN" :: (DeliveryStreamARN) , "DeliveryStreamStatus" :: (DeliveryStreamStatus) , "DeliveryStreamType" :: (DeliveryStreamType) , "VersionId" :: (DeliveryStreamVersionId) , "CreateTimestamp" :: Maybe (Types.Timestamp) , "LastUpdateTimestamp" :: Maybe (Types.Timestamp) , "Source" :: Maybe (SourceDescription) , "Destinations" :: (DestinationDescriptionList) , "HasMoreDestinations" :: (BooleanObject) } ) -> DeliveryStreamDescription
+newDeliveryStreamDescription' _DeliveryStreamARN _DeliveryStreamName _DeliveryStreamStatus _DeliveryStreamType _Destinations _HasMoreDestinations _VersionId customize = (DeliveryStreamDescription <<< customize) { "DeliveryStreamARN": _DeliveryStreamARN, "DeliveryStreamName": _DeliveryStreamName, "DeliveryStreamStatus": _DeliveryStreamStatus, "DeliveryStreamType": _DeliveryStreamType, "Destinations": _Destinations, "HasMoreDestinations": _HasMoreDestinations, "VersionId": _VersionId, "CreateTimestamp": Nothing, "LastUpdateTimestamp": Nothing, "Source": Nothing }
 
 
 
@@ -359,8 +358,8 @@ instance encodeDeliveryStreamVersionId :: Encode DeliveryStreamVersionId where e
 
 newtype DescribeDeliveryStreamInput = DescribeDeliveryStreamInput 
   { "DeliveryStreamName" :: (DeliveryStreamName)
-  , "Limit" :: NullOrUndefined (DescribeDeliveryStreamInputLimit)
-  , "ExclusiveStartDestinationId" :: NullOrUndefined (DestinationId)
+  , "Limit" :: Maybe (DescribeDeliveryStreamInputLimit)
+  , "ExclusiveStartDestinationId" :: Maybe (DestinationId)
   }
 derive instance newtypeDescribeDeliveryStreamInput :: Newtype DescribeDeliveryStreamInput _
 derive instance repGenericDescribeDeliveryStreamInput :: Generic DescribeDeliveryStreamInput _
@@ -370,12 +369,12 @@ instance encodeDescribeDeliveryStreamInput :: Encode DescribeDeliveryStreamInput
 
 -- | Constructs DescribeDeliveryStreamInput from required parameters
 newDescribeDeliveryStreamInput :: DeliveryStreamName -> DescribeDeliveryStreamInput
-newDescribeDeliveryStreamInput _DeliveryStreamName = DescribeDeliveryStreamInput { "DeliveryStreamName": _DeliveryStreamName, "ExclusiveStartDestinationId": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing) }
+newDescribeDeliveryStreamInput _DeliveryStreamName = DescribeDeliveryStreamInput { "DeliveryStreamName": _DeliveryStreamName, "ExclusiveStartDestinationId": Nothing, "Limit": Nothing }
 
 -- | Constructs DescribeDeliveryStreamInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeDeliveryStreamInput' :: DeliveryStreamName -> ( { "DeliveryStreamName" :: (DeliveryStreamName) , "Limit" :: NullOrUndefined (DescribeDeliveryStreamInputLimit) , "ExclusiveStartDestinationId" :: NullOrUndefined (DestinationId) } -> {"DeliveryStreamName" :: (DeliveryStreamName) , "Limit" :: NullOrUndefined (DescribeDeliveryStreamInputLimit) , "ExclusiveStartDestinationId" :: NullOrUndefined (DestinationId) } ) -> DescribeDeliveryStreamInput
-newDescribeDeliveryStreamInput' _DeliveryStreamName customize = (DescribeDeliveryStreamInput <<< customize) { "DeliveryStreamName": _DeliveryStreamName, "ExclusiveStartDestinationId": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing) }
+newDescribeDeliveryStreamInput' :: DeliveryStreamName -> ( { "DeliveryStreamName" :: (DeliveryStreamName) , "Limit" :: Maybe (DescribeDeliveryStreamInputLimit) , "ExclusiveStartDestinationId" :: Maybe (DestinationId) } -> {"DeliveryStreamName" :: (DeliveryStreamName) , "Limit" :: Maybe (DescribeDeliveryStreamInputLimit) , "ExclusiveStartDestinationId" :: Maybe (DestinationId) } ) -> DescribeDeliveryStreamInput
+newDescribeDeliveryStreamInput' _DeliveryStreamName customize = (DescribeDeliveryStreamInput <<< customize) { "DeliveryStreamName": _DeliveryStreamName, "ExclusiveStartDestinationId": Nothing, "Limit": Nothing }
 
 
 
@@ -411,11 +410,11 @@ newDescribeDeliveryStreamOutput' _DeliveryStreamDescription customize = (Describ
 -- | <p>Describes the destination for a delivery stream.</p>
 newtype DestinationDescription = DestinationDescription 
   { "DestinationId" :: (DestinationId)
-  , "S3DestinationDescription" :: NullOrUndefined (S3DestinationDescription)
-  , "ExtendedS3DestinationDescription" :: NullOrUndefined (ExtendedS3DestinationDescription)
-  , "RedshiftDestinationDescription" :: NullOrUndefined (RedshiftDestinationDescription)
-  , "ElasticsearchDestinationDescription" :: NullOrUndefined (ElasticsearchDestinationDescription)
-  , "SplunkDestinationDescription" :: NullOrUndefined (SplunkDestinationDescription)
+  , "S3DestinationDescription" :: Maybe (S3DestinationDescription)
+  , "ExtendedS3DestinationDescription" :: Maybe (ExtendedS3DestinationDescription)
+  , "RedshiftDestinationDescription" :: Maybe (RedshiftDestinationDescription)
+  , "ElasticsearchDestinationDescription" :: Maybe (ElasticsearchDestinationDescription)
+  , "SplunkDestinationDescription" :: Maybe (SplunkDestinationDescription)
   }
 derive instance newtypeDestinationDescription :: Newtype DestinationDescription _
 derive instance repGenericDestinationDescription :: Generic DestinationDescription _
@@ -425,12 +424,12 @@ instance encodeDestinationDescription :: Encode DestinationDescription where enc
 
 -- | Constructs DestinationDescription from required parameters
 newDestinationDescription :: DestinationId -> DestinationDescription
-newDestinationDescription _DestinationId = DestinationDescription { "DestinationId": _DestinationId, "ElasticsearchDestinationDescription": (NullOrUndefined Nothing), "ExtendedS3DestinationDescription": (NullOrUndefined Nothing), "RedshiftDestinationDescription": (NullOrUndefined Nothing), "S3DestinationDescription": (NullOrUndefined Nothing), "SplunkDestinationDescription": (NullOrUndefined Nothing) }
+newDestinationDescription _DestinationId = DestinationDescription { "DestinationId": _DestinationId, "ElasticsearchDestinationDescription": Nothing, "ExtendedS3DestinationDescription": Nothing, "RedshiftDestinationDescription": Nothing, "S3DestinationDescription": Nothing, "SplunkDestinationDescription": Nothing }
 
 -- | Constructs DestinationDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDestinationDescription' :: DestinationId -> ( { "DestinationId" :: (DestinationId) , "S3DestinationDescription" :: NullOrUndefined (S3DestinationDescription) , "ExtendedS3DestinationDescription" :: NullOrUndefined (ExtendedS3DestinationDescription) , "RedshiftDestinationDescription" :: NullOrUndefined (RedshiftDestinationDescription) , "ElasticsearchDestinationDescription" :: NullOrUndefined (ElasticsearchDestinationDescription) , "SplunkDestinationDescription" :: NullOrUndefined (SplunkDestinationDescription) } -> {"DestinationId" :: (DestinationId) , "S3DestinationDescription" :: NullOrUndefined (S3DestinationDescription) , "ExtendedS3DestinationDescription" :: NullOrUndefined (ExtendedS3DestinationDescription) , "RedshiftDestinationDescription" :: NullOrUndefined (RedshiftDestinationDescription) , "ElasticsearchDestinationDescription" :: NullOrUndefined (ElasticsearchDestinationDescription) , "SplunkDestinationDescription" :: NullOrUndefined (SplunkDestinationDescription) } ) -> DestinationDescription
-newDestinationDescription' _DestinationId customize = (DestinationDescription <<< customize) { "DestinationId": _DestinationId, "ElasticsearchDestinationDescription": (NullOrUndefined Nothing), "ExtendedS3DestinationDescription": (NullOrUndefined Nothing), "RedshiftDestinationDescription": (NullOrUndefined Nothing), "S3DestinationDescription": (NullOrUndefined Nothing), "SplunkDestinationDescription": (NullOrUndefined Nothing) }
+newDestinationDescription' :: DestinationId -> ( { "DestinationId" :: (DestinationId) , "S3DestinationDescription" :: Maybe (S3DestinationDescription) , "ExtendedS3DestinationDescription" :: Maybe (ExtendedS3DestinationDescription) , "RedshiftDestinationDescription" :: Maybe (RedshiftDestinationDescription) , "ElasticsearchDestinationDescription" :: Maybe (ElasticsearchDestinationDescription) , "SplunkDestinationDescription" :: Maybe (SplunkDestinationDescription) } -> {"DestinationId" :: (DestinationId) , "S3DestinationDescription" :: Maybe (S3DestinationDescription) , "ExtendedS3DestinationDescription" :: Maybe (ExtendedS3DestinationDescription) , "RedshiftDestinationDescription" :: Maybe (RedshiftDestinationDescription) , "ElasticsearchDestinationDescription" :: Maybe (ElasticsearchDestinationDescription) , "SplunkDestinationDescription" :: Maybe (SplunkDestinationDescription) } ) -> DestinationDescription
+newDestinationDescription' _DestinationId customize = (DestinationDescription <<< customize) { "DestinationId": _DestinationId, "ElasticsearchDestinationDescription": Nothing, "ExtendedS3DestinationDescription": Nothing, "RedshiftDestinationDescription": Nothing, "S3DestinationDescription": Nothing, "SplunkDestinationDescription": Nothing }
 
 
 
@@ -454,8 +453,8 @@ instance encodeDestinationId :: Encode DestinationId where encode = genericEncod
 
 -- | <p>Describes the buffering to perform before delivering data to the Amazon ES destination.</p>
 newtype ElasticsearchBufferingHints = ElasticsearchBufferingHints 
-  { "IntervalInSeconds" :: NullOrUndefined (ElasticsearchBufferingIntervalInSeconds)
-  , "SizeInMBs" :: NullOrUndefined (ElasticsearchBufferingSizeInMBs)
+  { "IntervalInSeconds" :: Maybe (ElasticsearchBufferingIntervalInSeconds)
+  , "SizeInMBs" :: Maybe (ElasticsearchBufferingSizeInMBs)
   }
 derive instance newtypeElasticsearchBufferingHints :: Newtype ElasticsearchBufferingHints _
 derive instance repGenericElasticsearchBufferingHints :: Generic ElasticsearchBufferingHints _
@@ -465,12 +464,12 @@ instance encodeElasticsearchBufferingHints :: Encode ElasticsearchBufferingHints
 
 -- | Constructs ElasticsearchBufferingHints from required parameters
 newElasticsearchBufferingHints :: ElasticsearchBufferingHints
-newElasticsearchBufferingHints  = ElasticsearchBufferingHints { "IntervalInSeconds": (NullOrUndefined Nothing), "SizeInMBs": (NullOrUndefined Nothing) }
+newElasticsearchBufferingHints  = ElasticsearchBufferingHints { "IntervalInSeconds": Nothing, "SizeInMBs": Nothing }
 
 -- | Constructs ElasticsearchBufferingHints's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newElasticsearchBufferingHints' :: ( { "IntervalInSeconds" :: NullOrUndefined (ElasticsearchBufferingIntervalInSeconds) , "SizeInMBs" :: NullOrUndefined (ElasticsearchBufferingSizeInMBs) } -> {"IntervalInSeconds" :: NullOrUndefined (ElasticsearchBufferingIntervalInSeconds) , "SizeInMBs" :: NullOrUndefined (ElasticsearchBufferingSizeInMBs) } ) -> ElasticsearchBufferingHints
-newElasticsearchBufferingHints'  customize = (ElasticsearchBufferingHints <<< customize) { "IntervalInSeconds": (NullOrUndefined Nothing), "SizeInMBs": (NullOrUndefined Nothing) }
+newElasticsearchBufferingHints' :: ( { "IntervalInSeconds" :: Maybe (ElasticsearchBufferingIntervalInSeconds) , "SizeInMBs" :: Maybe (ElasticsearchBufferingSizeInMBs) } -> {"IntervalInSeconds" :: Maybe (ElasticsearchBufferingIntervalInSeconds) , "SizeInMBs" :: Maybe (ElasticsearchBufferingSizeInMBs) } ) -> ElasticsearchBufferingHints
+newElasticsearchBufferingHints'  customize = (ElasticsearchBufferingHints <<< customize) { "IntervalInSeconds": Nothing, "SizeInMBs": Nothing }
 
 
 
@@ -498,13 +497,13 @@ newtype ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfigur
   , "DomainARN" :: (ElasticsearchDomainARN)
   , "IndexName" :: (ElasticsearchIndexName)
   , "TypeName" :: (ElasticsearchTypeName)
-  , "IndexRotationPeriod" :: NullOrUndefined (ElasticsearchIndexRotationPeriod)
-  , "BufferingHints" :: NullOrUndefined (ElasticsearchBufferingHints)
-  , "RetryOptions" :: NullOrUndefined (ElasticsearchRetryOptions)
-  , "S3BackupMode" :: NullOrUndefined (ElasticsearchS3BackupMode)
+  , "IndexRotationPeriod" :: Maybe (ElasticsearchIndexRotationPeriod)
+  , "BufferingHints" :: Maybe (ElasticsearchBufferingHints)
+  , "RetryOptions" :: Maybe (ElasticsearchRetryOptions)
+  , "S3BackupMode" :: Maybe (ElasticsearchS3BackupMode)
   , "S3Configuration" :: (S3DestinationConfiguration)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeElasticsearchDestinationConfiguration :: Newtype ElasticsearchDestinationConfiguration _
 derive instance repGenericElasticsearchDestinationConfiguration :: Generic ElasticsearchDestinationConfiguration _
@@ -514,28 +513,28 @@ instance encodeElasticsearchDestinationConfiguration :: Encode ElasticsearchDest
 
 -- | Constructs ElasticsearchDestinationConfiguration from required parameters
 newElasticsearchDestinationConfiguration :: ElasticsearchDomainARN -> ElasticsearchIndexName -> RoleARN -> S3DestinationConfiguration -> ElasticsearchTypeName -> ElasticsearchDestinationConfiguration
-newElasticsearchDestinationConfiguration _DomainARN _IndexName _RoleARN _S3Configuration _TypeName = ElasticsearchDestinationConfiguration { "DomainARN": _DomainARN, "IndexName": _IndexName, "RoleARN": _RoleARN, "S3Configuration": _S3Configuration, "TypeName": _TypeName, "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "IndexRotationPeriod": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newElasticsearchDestinationConfiguration _DomainARN _IndexName _RoleARN _S3Configuration _TypeName = ElasticsearchDestinationConfiguration { "DomainARN": _DomainARN, "IndexName": _IndexName, "RoleARN": _RoleARN, "S3Configuration": _S3Configuration, "TypeName": _TypeName, "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "IndexRotationPeriod": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupMode": Nothing }
 
 -- | Constructs ElasticsearchDestinationConfiguration's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newElasticsearchDestinationConfiguration' :: ElasticsearchDomainARN -> ElasticsearchIndexName -> RoleARN -> S3DestinationConfiguration -> ElasticsearchTypeName -> ( { "RoleARN" :: (RoleARN) , "DomainARN" :: (ElasticsearchDomainARN) , "IndexName" :: (ElasticsearchIndexName) , "TypeName" :: (ElasticsearchTypeName) , "IndexRotationPeriod" :: NullOrUndefined (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: NullOrUndefined (ElasticsearchBufferingHints) , "RetryOptions" :: NullOrUndefined (ElasticsearchRetryOptions) , "S3BackupMode" :: NullOrUndefined (ElasticsearchS3BackupMode) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"RoleARN" :: (RoleARN) , "DomainARN" :: (ElasticsearchDomainARN) , "IndexName" :: (ElasticsearchIndexName) , "TypeName" :: (ElasticsearchTypeName) , "IndexRotationPeriod" :: NullOrUndefined (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: NullOrUndefined (ElasticsearchBufferingHints) , "RetryOptions" :: NullOrUndefined (ElasticsearchRetryOptions) , "S3BackupMode" :: NullOrUndefined (ElasticsearchS3BackupMode) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> ElasticsearchDestinationConfiguration
-newElasticsearchDestinationConfiguration' _DomainARN _IndexName _RoleARN _S3Configuration _TypeName customize = (ElasticsearchDestinationConfiguration <<< customize) { "DomainARN": _DomainARN, "IndexName": _IndexName, "RoleARN": _RoleARN, "S3Configuration": _S3Configuration, "TypeName": _TypeName, "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "IndexRotationPeriod": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newElasticsearchDestinationConfiguration' :: ElasticsearchDomainARN -> ElasticsearchIndexName -> RoleARN -> S3DestinationConfiguration -> ElasticsearchTypeName -> ( { "RoleARN" :: (RoleARN) , "DomainARN" :: (ElasticsearchDomainARN) , "IndexName" :: (ElasticsearchIndexName) , "TypeName" :: (ElasticsearchTypeName) , "IndexRotationPeriod" :: Maybe (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: Maybe (ElasticsearchBufferingHints) , "RetryOptions" :: Maybe (ElasticsearchRetryOptions) , "S3BackupMode" :: Maybe (ElasticsearchS3BackupMode) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"RoleARN" :: (RoleARN) , "DomainARN" :: (ElasticsearchDomainARN) , "IndexName" :: (ElasticsearchIndexName) , "TypeName" :: (ElasticsearchTypeName) , "IndexRotationPeriod" :: Maybe (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: Maybe (ElasticsearchBufferingHints) , "RetryOptions" :: Maybe (ElasticsearchRetryOptions) , "S3BackupMode" :: Maybe (ElasticsearchS3BackupMode) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> ElasticsearchDestinationConfiguration
+newElasticsearchDestinationConfiguration' _DomainARN _IndexName _RoleARN _S3Configuration _TypeName customize = (ElasticsearchDestinationConfiguration <<< customize) { "DomainARN": _DomainARN, "IndexName": _IndexName, "RoleARN": _RoleARN, "S3Configuration": _S3Configuration, "TypeName": _TypeName, "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "IndexRotationPeriod": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupMode": Nothing }
 
 
 
 -- | <p>The destination description in Amazon ES.</p>
 newtype ElasticsearchDestinationDescription = ElasticsearchDestinationDescription 
-  { "RoleARN" :: NullOrUndefined (RoleARN)
-  , "DomainARN" :: NullOrUndefined (ElasticsearchDomainARN)
-  , "IndexName" :: NullOrUndefined (ElasticsearchIndexName)
-  , "TypeName" :: NullOrUndefined (ElasticsearchTypeName)
-  , "IndexRotationPeriod" :: NullOrUndefined (ElasticsearchIndexRotationPeriod)
-  , "BufferingHints" :: NullOrUndefined (ElasticsearchBufferingHints)
-  , "RetryOptions" :: NullOrUndefined (ElasticsearchRetryOptions)
-  , "S3BackupMode" :: NullOrUndefined (ElasticsearchS3BackupMode)
-  , "S3DestinationDescription" :: NullOrUndefined (S3DestinationDescription)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  { "RoleARN" :: Maybe (RoleARN)
+  , "DomainARN" :: Maybe (ElasticsearchDomainARN)
+  , "IndexName" :: Maybe (ElasticsearchIndexName)
+  , "TypeName" :: Maybe (ElasticsearchTypeName)
+  , "IndexRotationPeriod" :: Maybe (ElasticsearchIndexRotationPeriod)
+  , "BufferingHints" :: Maybe (ElasticsearchBufferingHints)
+  , "RetryOptions" :: Maybe (ElasticsearchRetryOptions)
+  , "S3BackupMode" :: Maybe (ElasticsearchS3BackupMode)
+  , "S3DestinationDescription" :: Maybe (S3DestinationDescription)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeElasticsearchDestinationDescription :: Newtype ElasticsearchDestinationDescription _
 derive instance repGenericElasticsearchDestinationDescription :: Generic ElasticsearchDestinationDescription _
@@ -545,27 +544,27 @@ instance encodeElasticsearchDestinationDescription :: Encode ElasticsearchDestin
 
 -- | Constructs ElasticsearchDestinationDescription from required parameters
 newElasticsearchDestinationDescription :: ElasticsearchDestinationDescription
-newElasticsearchDestinationDescription  = ElasticsearchDestinationDescription { "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "DomainARN": (NullOrUndefined Nothing), "IndexName": (NullOrUndefined Nothing), "IndexRotationPeriod": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing), "S3DestinationDescription": (NullOrUndefined Nothing), "TypeName": (NullOrUndefined Nothing) }
+newElasticsearchDestinationDescription  = ElasticsearchDestinationDescription { "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "DomainARN": Nothing, "IndexName": Nothing, "IndexRotationPeriod": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "RoleARN": Nothing, "S3BackupMode": Nothing, "S3DestinationDescription": Nothing, "TypeName": Nothing }
 
 -- | Constructs ElasticsearchDestinationDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newElasticsearchDestinationDescription' :: ( { "RoleARN" :: NullOrUndefined (RoleARN) , "DomainARN" :: NullOrUndefined (ElasticsearchDomainARN) , "IndexName" :: NullOrUndefined (ElasticsearchIndexName) , "TypeName" :: NullOrUndefined (ElasticsearchTypeName) , "IndexRotationPeriod" :: NullOrUndefined (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: NullOrUndefined (ElasticsearchBufferingHints) , "RetryOptions" :: NullOrUndefined (ElasticsearchRetryOptions) , "S3BackupMode" :: NullOrUndefined (ElasticsearchS3BackupMode) , "S3DestinationDescription" :: NullOrUndefined (S3DestinationDescription) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"RoleARN" :: NullOrUndefined (RoleARN) , "DomainARN" :: NullOrUndefined (ElasticsearchDomainARN) , "IndexName" :: NullOrUndefined (ElasticsearchIndexName) , "TypeName" :: NullOrUndefined (ElasticsearchTypeName) , "IndexRotationPeriod" :: NullOrUndefined (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: NullOrUndefined (ElasticsearchBufferingHints) , "RetryOptions" :: NullOrUndefined (ElasticsearchRetryOptions) , "S3BackupMode" :: NullOrUndefined (ElasticsearchS3BackupMode) , "S3DestinationDescription" :: NullOrUndefined (S3DestinationDescription) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> ElasticsearchDestinationDescription
-newElasticsearchDestinationDescription'  customize = (ElasticsearchDestinationDescription <<< customize) { "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "DomainARN": (NullOrUndefined Nothing), "IndexName": (NullOrUndefined Nothing), "IndexRotationPeriod": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing), "S3DestinationDescription": (NullOrUndefined Nothing), "TypeName": (NullOrUndefined Nothing) }
+newElasticsearchDestinationDescription' :: ( { "RoleARN" :: Maybe (RoleARN) , "DomainARN" :: Maybe (ElasticsearchDomainARN) , "IndexName" :: Maybe (ElasticsearchIndexName) , "TypeName" :: Maybe (ElasticsearchTypeName) , "IndexRotationPeriod" :: Maybe (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: Maybe (ElasticsearchBufferingHints) , "RetryOptions" :: Maybe (ElasticsearchRetryOptions) , "S3BackupMode" :: Maybe (ElasticsearchS3BackupMode) , "S3DestinationDescription" :: Maybe (S3DestinationDescription) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"RoleARN" :: Maybe (RoleARN) , "DomainARN" :: Maybe (ElasticsearchDomainARN) , "IndexName" :: Maybe (ElasticsearchIndexName) , "TypeName" :: Maybe (ElasticsearchTypeName) , "IndexRotationPeriod" :: Maybe (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: Maybe (ElasticsearchBufferingHints) , "RetryOptions" :: Maybe (ElasticsearchRetryOptions) , "S3BackupMode" :: Maybe (ElasticsearchS3BackupMode) , "S3DestinationDescription" :: Maybe (S3DestinationDescription) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> ElasticsearchDestinationDescription
+newElasticsearchDestinationDescription'  customize = (ElasticsearchDestinationDescription <<< customize) { "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "DomainARN": Nothing, "IndexName": Nothing, "IndexRotationPeriod": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "RoleARN": Nothing, "S3BackupMode": Nothing, "S3DestinationDescription": Nothing, "TypeName": Nothing }
 
 
 
 -- | <p>Describes an update for a destination in Amazon ES.</p>
 newtype ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate 
-  { "RoleARN" :: NullOrUndefined (RoleARN)
-  , "DomainARN" :: NullOrUndefined (ElasticsearchDomainARN)
-  , "IndexName" :: NullOrUndefined (ElasticsearchIndexName)
-  , "TypeName" :: NullOrUndefined (ElasticsearchTypeName)
-  , "IndexRotationPeriod" :: NullOrUndefined (ElasticsearchIndexRotationPeriod)
-  , "BufferingHints" :: NullOrUndefined (ElasticsearchBufferingHints)
-  , "RetryOptions" :: NullOrUndefined (ElasticsearchRetryOptions)
-  , "S3Update" :: NullOrUndefined (S3DestinationUpdate)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  { "RoleARN" :: Maybe (RoleARN)
+  , "DomainARN" :: Maybe (ElasticsearchDomainARN)
+  , "IndexName" :: Maybe (ElasticsearchIndexName)
+  , "TypeName" :: Maybe (ElasticsearchTypeName)
+  , "IndexRotationPeriod" :: Maybe (ElasticsearchIndexRotationPeriod)
+  , "BufferingHints" :: Maybe (ElasticsearchBufferingHints)
+  , "RetryOptions" :: Maybe (ElasticsearchRetryOptions)
+  , "S3Update" :: Maybe (S3DestinationUpdate)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeElasticsearchDestinationUpdate :: Newtype ElasticsearchDestinationUpdate _
 derive instance repGenericElasticsearchDestinationUpdate :: Generic ElasticsearchDestinationUpdate _
@@ -575,12 +574,12 @@ instance encodeElasticsearchDestinationUpdate :: Encode ElasticsearchDestination
 
 -- | Constructs ElasticsearchDestinationUpdate from required parameters
 newElasticsearchDestinationUpdate :: ElasticsearchDestinationUpdate
-newElasticsearchDestinationUpdate  = ElasticsearchDestinationUpdate { "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "DomainARN": (NullOrUndefined Nothing), "IndexName": (NullOrUndefined Nothing), "IndexRotationPeriod": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "S3Update": (NullOrUndefined Nothing), "TypeName": (NullOrUndefined Nothing) }
+newElasticsearchDestinationUpdate  = ElasticsearchDestinationUpdate { "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "DomainARN": Nothing, "IndexName": Nothing, "IndexRotationPeriod": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "RoleARN": Nothing, "S3Update": Nothing, "TypeName": Nothing }
 
 -- | Constructs ElasticsearchDestinationUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newElasticsearchDestinationUpdate' :: ( { "RoleARN" :: NullOrUndefined (RoleARN) , "DomainARN" :: NullOrUndefined (ElasticsearchDomainARN) , "IndexName" :: NullOrUndefined (ElasticsearchIndexName) , "TypeName" :: NullOrUndefined (ElasticsearchTypeName) , "IndexRotationPeriod" :: NullOrUndefined (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: NullOrUndefined (ElasticsearchBufferingHints) , "RetryOptions" :: NullOrUndefined (ElasticsearchRetryOptions) , "S3Update" :: NullOrUndefined (S3DestinationUpdate) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"RoleARN" :: NullOrUndefined (RoleARN) , "DomainARN" :: NullOrUndefined (ElasticsearchDomainARN) , "IndexName" :: NullOrUndefined (ElasticsearchIndexName) , "TypeName" :: NullOrUndefined (ElasticsearchTypeName) , "IndexRotationPeriod" :: NullOrUndefined (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: NullOrUndefined (ElasticsearchBufferingHints) , "RetryOptions" :: NullOrUndefined (ElasticsearchRetryOptions) , "S3Update" :: NullOrUndefined (S3DestinationUpdate) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> ElasticsearchDestinationUpdate
-newElasticsearchDestinationUpdate'  customize = (ElasticsearchDestinationUpdate <<< customize) { "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "DomainARN": (NullOrUndefined Nothing), "IndexName": (NullOrUndefined Nothing), "IndexRotationPeriod": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "S3Update": (NullOrUndefined Nothing), "TypeName": (NullOrUndefined Nothing) }
+newElasticsearchDestinationUpdate' :: ( { "RoleARN" :: Maybe (RoleARN) , "DomainARN" :: Maybe (ElasticsearchDomainARN) , "IndexName" :: Maybe (ElasticsearchIndexName) , "TypeName" :: Maybe (ElasticsearchTypeName) , "IndexRotationPeriod" :: Maybe (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: Maybe (ElasticsearchBufferingHints) , "RetryOptions" :: Maybe (ElasticsearchRetryOptions) , "S3Update" :: Maybe (S3DestinationUpdate) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"RoleARN" :: Maybe (RoleARN) , "DomainARN" :: Maybe (ElasticsearchDomainARN) , "IndexName" :: Maybe (ElasticsearchIndexName) , "TypeName" :: Maybe (ElasticsearchTypeName) , "IndexRotationPeriod" :: Maybe (ElasticsearchIndexRotationPeriod) , "BufferingHints" :: Maybe (ElasticsearchBufferingHints) , "RetryOptions" :: Maybe (ElasticsearchRetryOptions) , "S3Update" :: Maybe (S3DestinationUpdate) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> ElasticsearchDestinationUpdate
+newElasticsearchDestinationUpdate'  customize = (ElasticsearchDestinationUpdate <<< customize) { "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "DomainARN": Nothing, "IndexName": Nothing, "IndexRotationPeriod": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "RoleARN": Nothing, "S3Update": Nothing, "TypeName": Nothing }
 
 
 
@@ -622,7 +621,7 @@ instance encodeElasticsearchRetryDurationInSeconds :: Encode ElasticsearchRetryD
 
 -- | <p>Configures retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon ES.</p>
 newtype ElasticsearchRetryOptions = ElasticsearchRetryOptions 
-  { "DurationInSeconds" :: NullOrUndefined (ElasticsearchRetryDurationInSeconds)
+  { "DurationInSeconds" :: Maybe (ElasticsearchRetryDurationInSeconds)
   }
 derive instance newtypeElasticsearchRetryOptions :: Newtype ElasticsearchRetryOptions _
 derive instance repGenericElasticsearchRetryOptions :: Generic ElasticsearchRetryOptions _
@@ -632,12 +631,12 @@ instance encodeElasticsearchRetryOptions :: Encode ElasticsearchRetryOptions whe
 
 -- | Constructs ElasticsearchRetryOptions from required parameters
 newElasticsearchRetryOptions :: ElasticsearchRetryOptions
-newElasticsearchRetryOptions  = ElasticsearchRetryOptions { "DurationInSeconds": (NullOrUndefined Nothing) }
+newElasticsearchRetryOptions  = ElasticsearchRetryOptions { "DurationInSeconds": Nothing }
 
 -- | Constructs ElasticsearchRetryOptions's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newElasticsearchRetryOptions' :: ( { "DurationInSeconds" :: NullOrUndefined (ElasticsearchRetryDurationInSeconds) } -> {"DurationInSeconds" :: NullOrUndefined (ElasticsearchRetryDurationInSeconds) } ) -> ElasticsearchRetryOptions
-newElasticsearchRetryOptions'  customize = (ElasticsearchRetryOptions <<< customize) { "DurationInSeconds": (NullOrUndefined Nothing) }
+newElasticsearchRetryOptions' :: ( { "DurationInSeconds" :: Maybe (ElasticsearchRetryDurationInSeconds) } -> {"DurationInSeconds" :: Maybe (ElasticsearchRetryDurationInSeconds) } ) -> ElasticsearchRetryOptions
+newElasticsearchRetryOptions'  customize = (ElasticsearchRetryOptions <<< customize) { "DurationInSeconds": Nothing }
 
 
 
@@ -661,8 +660,8 @@ instance encodeElasticsearchTypeName :: Encode ElasticsearchTypeName where encod
 
 -- | <p>Describes the encryption for a destination in Amazon S3.</p>
 newtype EncryptionConfiguration = EncryptionConfiguration 
-  { "NoEncryptionConfig" :: NullOrUndefined (NoEncryptionConfig)
-  , "KMSEncryptionConfig" :: NullOrUndefined (KMSEncryptionConfig)
+  { "NoEncryptionConfig" :: Maybe (NoEncryptionConfig)
+  , "KMSEncryptionConfig" :: Maybe (KMSEncryptionConfig)
   }
 derive instance newtypeEncryptionConfiguration :: Newtype EncryptionConfiguration _
 derive instance repGenericEncryptionConfiguration :: Generic EncryptionConfiguration _
@@ -672,12 +671,12 @@ instance encodeEncryptionConfiguration :: Encode EncryptionConfiguration where e
 
 -- | Constructs EncryptionConfiguration from required parameters
 newEncryptionConfiguration :: EncryptionConfiguration
-newEncryptionConfiguration  = EncryptionConfiguration { "KMSEncryptionConfig": (NullOrUndefined Nothing), "NoEncryptionConfig": (NullOrUndefined Nothing) }
+newEncryptionConfiguration  = EncryptionConfiguration { "KMSEncryptionConfig": Nothing, "NoEncryptionConfig": Nothing }
 
 -- | Constructs EncryptionConfiguration's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEncryptionConfiguration' :: ( { "NoEncryptionConfig" :: NullOrUndefined (NoEncryptionConfig) , "KMSEncryptionConfig" :: NullOrUndefined (KMSEncryptionConfig) } -> {"NoEncryptionConfig" :: NullOrUndefined (NoEncryptionConfig) , "KMSEncryptionConfig" :: NullOrUndefined (KMSEncryptionConfig) } ) -> EncryptionConfiguration
-newEncryptionConfiguration'  customize = (EncryptionConfiguration <<< customize) { "KMSEncryptionConfig": (NullOrUndefined Nothing), "NoEncryptionConfig": (NullOrUndefined Nothing) }
+newEncryptionConfiguration' :: ( { "NoEncryptionConfig" :: Maybe (NoEncryptionConfig) , "KMSEncryptionConfig" :: Maybe (KMSEncryptionConfig) } -> {"NoEncryptionConfig" :: Maybe (NoEncryptionConfig) , "KMSEncryptionConfig" :: Maybe (KMSEncryptionConfig) } ) -> EncryptionConfiguration
+newEncryptionConfiguration'  customize = (EncryptionConfiguration <<< customize) { "KMSEncryptionConfig": Nothing, "NoEncryptionConfig": Nothing }
 
 
 
@@ -703,14 +702,14 @@ instance encodeErrorMessage :: Encode ErrorMessage where encode = genericEncode 
 newtype ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration 
   { "RoleARN" :: (RoleARN)
   , "BucketARN" :: (BucketARN)
-  , "Prefix" :: NullOrUndefined (Prefix)
-  , "BufferingHints" :: NullOrUndefined (BufferingHints)
-  , "CompressionFormat" :: NullOrUndefined (CompressionFormat)
-  , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "S3BackupMode" :: NullOrUndefined (S3BackupMode)
-  , "S3BackupConfiguration" :: NullOrUndefined (S3DestinationConfiguration)
+  , "Prefix" :: Maybe (Prefix)
+  , "BufferingHints" :: Maybe (BufferingHints)
+  , "CompressionFormat" :: Maybe (CompressionFormat)
+  , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "S3BackupMode" :: Maybe (S3BackupMode)
+  , "S3BackupConfiguration" :: Maybe (S3DestinationConfiguration)
   }
 derive instance newtypeExtendedS3DestinationConfiguration :: Newtype ExtendedS3DestinationConfiguration _
 derive instance repGenericExtendedS3DestinationConfiguration :: Generic ExtendedS3DestinationConfiguration _
@@ -720,12 +719,12 @@ instance encodeExtendedS3DestinationConfiguration :: Encode ExtendedS3Destinatio
 
 -- | Constructs ExtendedS3DestinationConfiguration from required parameters
 newExtendedS3DestinationConfiguration :: BucketARN -> RoleARN -> ExtendedS3DestinationConfiguration
-newExtendedS3DestinationConfiguration _BucketARN _RoleARN = ExtendedS3DestinationConfiguration { "BucketARN": _BucketARN, "RoleARN": _RoleARN, "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "CompressionFormat": (NullOrUndefined Nothing), "EncryptionConfiguration": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "S3BackupConfiguration": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newExtendedS3DestinationConfiguration _BucketARN _RoleARN = ExtendedS3DestinationConfiguration { "BucketARN": _BucketARN, "RoleARN": _RoleARN, "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "CompressionFormat": Nothing, "EncryptionConfiguration": Nothing, "Prefix": Nothing, "ProcessingConfiguration": Nothing, "S3BackupConfiguration": Nothing, "S3BackupMode": Nothing }
 
 -- | Constructs ExtendedS3DestinationConfiguration's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newExtendedS3DestinationConfiguration' :: BucketARN -> RoleARN -> ( { "RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: NullOrUndefined (BufferingHints) , "CompressionFormat" :: NullOrUndefined (CompressionFormat) , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (S3BackupMode) , "S3BackupConfiguration" :: NullOrUndefined (S3DestinationConfiguration) } -> {"RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: NullOrUndefined (BufferingHints) , "CompressionFormat" :: NullOrUndefined (CompressionFormat) , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (S3BackupMode) , "S3BackupConfiguration" :: NullOrUndefined (S3DestinationConfiguration) } ) -> ExtendedS3DestinationConfiguration
-newExtendedS3DestinationConfiguration' _BucketARN _RoleARN customize = (ExtendedS3DestinationConfiguration <<< customize) { "BucketARN": _BucketARN, "RoleARN": _RoleARN, "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "CompressionFormat": (NullOrUndefined Nothing), "EncryptionConfiguration": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "S3BackupConfiguration": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newExtendedS3DestinationConfiguration' :: BucketARN -> RoleARN -> ( { "RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: Maybe (BufferingHints) , "CompressionFormat" :: Maybe (CompressionFormat) , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (S3BackupMode) , "S3BackupConfiguration" :: Maybe (S3DestinationConfiguration) } -> {"RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: Maybe (BufferingHints) , "CompressionFormat" :: Maybe (CompressionFormat) , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (S3BackupMode) , "S3BackupConfiguration" :: Maybe (S3DestinationConfiguration) } ) -> ExtendedS3DestinationConfiguration
+newExtendedS3DestinationConfiguration' _BucketARN _RoleARN customize = (ExtendedS3DestinationConfiguration <<< customize) { "BucketARN": _BucketARN, "RoleARN": _RoleARN, "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "CompressionFormat": Nothing, "EncryptionConfiguration": Nothing, "Prefix": Nothing, "ProcessingConfiguration": Nothing, "S3BackupConfiguration": Nothing, "S3BackupMode": Nothing }
 
 
 
@@ -733,14 +732,14 @@ newExtendedS3DestinationConfiguration' _BucketARN _RoleARN customize = (Extended
 newtype ExtendedS3DestinationDescription = ExtendedS3DestinationDescription 
   { "RoleARN" :: (RoleARN)
   , "BucketARN" :: (BucketARN)
-  , "Prefix" :: NullOrUndefined (Prefix)
+  , "Prefix" :: Maybe (Prefix)
   , "BufferingHints" :: (BufferingHints)
   , "CompressionFormat" :: (CompressionFormat)
   , "EncryptionConfiguration" :: (EncryptionConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "S3BackupMode" :: NullOrUndefined (S3BackupMode)
-  , "S3BackupDescription" :: NullOrUndefined (S3DestinationDescription)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "S3BackupMode" :: Maybe (S3BackupMode)
+  , "S3BackupDescription" :: Maybe (S3DestinationDescription)
   }
 derive instance newtypeExtendedS3DestinationDescription :: Newtype ExtendedS3DestinationDescription _
 derive instance repGenericExtendedS3DestinationDescription :: Generic ExtendedS3DestinationDescription _
@@ -750,27 +749,27 @@ instance encodeExtendedS3DestinationDescription :: Encode ExtendedS3DestinationD
 
 -- | Constructs ExtendedS3DestinationDescription from required parameters
 newExtendedS3DestinationDescription :: BucketARN -> BufferingHints -> CompressionFormat -> EncryptionConfiguration -> RoleARN -> ExtendedS3DestinationDescription
-newExtendedS3DestinationDescription _BucketARN _BufferingHints _CompressionFormat _EncryptionConfiguration _RoleARN = ExtendedS3DestinationDescription { "BucketARN": _BucketARN, "BufferingHints": _BufferingHints, "CompressionFormat": _CompressionFormat, "EncryptionConfiguration": _EncryptionConfiguration, "RoleARN": _RoleARN, "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "S3BackupDescription": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newExtendedS3DestinationDescription _BucketARN _BufferingHints _CompressionFormat _EncryptionConfiguration _RoleARN = ExtendedS3DestinationDescription { "BucketARN": _BucketARN, "BufferingHints": _BufferingHints, "CompressionFormat": _CompressionFormat, "EncryptionConfiguration": _EncryptionConfiguration, "RoleARN": _RoleARN, "CloudWatchLoggingOptions": Nothing, "Prefix": Nothing, "ProcessingConfiguration": Nothing, "S3BackupDescription": Nothing, "S3BackupMode": Nothing }
 
 -- | Constructs ExtendedS3DestinationDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newExtendedS3DestinationDescription' :: BucketARN -> BufferingHints -> CompressionFormat -> EncryptionConfiguration -> RoleARN -> ( { "RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: (BufferingHints) , "CompressionFormat" :: (CompressionFormat) , "EncryptionConfiguration" :: (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (S3BackupMode) , "S3BackupDescription" :: NullOrUndefined (S3DestinationDescription) } -> {"RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: (BufferingHints) , "CompressionFormat" :: (CompressionFormat) , "EncryptionConfiguration" :: (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (S3BackupMode) , "S3BackupDescription" :: NullOrUndefined (S3DestinationDescription) } ) -> ExtendedS3DestinationDescription
-newExtendedS3DestinationDescription' _BucketARN _BufferingHints _CompressionFormat _EncryptionConfiguration _RoleARN customize = (ExtendedS3DestinationDescription <<< customize) { "BucketARN": _BucketARN, "BufferingHints": _BufferingHints, "CompressionFormat": _CompressionFormat, "EncryptionConfiguration": _EncryptionConfiguration, "RoleARN": _RoleARN, "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "S3BackupDescription": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newExtendedS3DestinationDescription' :: BucketARN -> BufferingHints -> CompressionFormat -> EncryptionConfiguration -> RoleARN -> ( { "RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: (BufferingHints) , "CompressionFormat" :: (CompressionFormat) , "EncryptionConfiguration" :: (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (S3BackupMode) , "S3BackupDescription" :: Maybe (S3DestinationDescription) } -> {"RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: (BufferingHints) , "CompressionFormat" :: (CompressionFormat) , "EncryptionConfiguration" :: (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (S3BackupMode) , "S3BackupDescription" :: Maybe (S3DestinationDescription) } ) -> ExtendedS3DestinationDescription
+newExtendedS3DestinationDescription' _BucketARN _BufferingHints _CompressionFormat _EncryptionConfiguration _RoleARN customize = (ExtendedS3DestinationDescription <<< customize) { "BucketARN": _BucketARN, "BufferingHints": _BufferingHints, "CompressionFormat": _CompressionFormat, "EncryptionConfiguration": _EncryptionConfiguration, "RoleARN": _RoleARN, "CloudWatchLoggingOptions": Nothing, "Prefix": Nothing, "ProcessingConfiguration": Nothing, "S3BackupDescription": Nothing, "S3BackupMode": Nothing }
 
 
 
 -- | <p>Describes an update for a destination in Amazon S3.</p>
 newtype ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate 
-  { "RoleARN" :: NullOrUndefined (RoleARN)
-  , "BucketARN" :: NullOrUndefined (BucketARN)
-  , "Prefix" :: NullOrUndefined (Prefix)
-  , "BufferingHints" :: NullOrUndefined (BufferingHints)
-  , "CompressionFormat" :: NullOrUndefined (CompressionFormat)
-  , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "S3BackupMode" :: NullOrUndefined (S3BackupMode)
-  , "S3BackupUpdate" :: NullOrUndefined (S3DestinationUpdate)
+  { "RoleARN" :: Maybe (RoleARN)
+  , "BucketARN" :: Maybe (BucketARN)
+  , "Prefix" :: Maybe (Prefix)
+  , "BufferingHints" :: Maybe (BufferingHints)
+  , "CompressionFormat" :: Maybe (CompressionFormat)
+  , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "S3BackupMode" :: Maybe (S3BackupMode)
+  , "S3BackupUpdate" :: Maybe (S3DestinationUpdate)
   }
 derive instance newtypeExtendedS3DestinationUpdate :: Newtype ExtendedS3DestinationUpdate _
 derive instance repGenericExtendedS3DestinationUpdate :: Generic ExtendedS3DestinationUpdate _
@@ -780,12 +779,12 @@ instance encodeExtendedS3DestinationUpdate :: Encode ExtendedS3DestinationUpdate
 
 -- | Constructs ExtendedS3DestinationUpdate from required parameters
 newExtendedS3DestinationUpdate :: ExtendedS3DestinationUpdate
-newExtendedS3DestinationUpdate  = ExtendedS3DestinationUpdate { "BucketARN": (NullOrUndefined Nothing), "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "CompressionFormat": (NullOrUndefined Nothing), "EncryptionConfiguration": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing), "S3BackupUpdate": (NullOrUndefined Nothing) }
+newExtendedS3DestinationUpdate  = ExtendedS3DestinationUpdate { "BucketARN": Nothing, "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "CompressionFormat": Nothing, "EncryptionConfiguration": Nothing, "Prefix": Nothing, "ProcessingConfiguration": Nothing, "RoleARN": Nothing, "S3BackupMode": Nothing, "S3BackupUpdate": Nothing }
 
 -- | Constructs ExtendedS3DestinationUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newExtendedS3DestinationUpdate' :: ( { "RoleARN" :: NullOrUndefined (RoleARN) , "BucketARN" :: NullOrUndefined (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: NullOrUndefined (BufferingHints) , "CompressionFormat" :: NullOrUndefined (CompressionFormat) , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (S3BackupMode) , "S3BackupUpdate" :: NullOrUndefined (S3DestinationUpdate) } -> {"RoleARN" :: NullOrUndefined (RoleARN) , "BucketARN" :: NullOrUndefined (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: NullOrUndefined (BufferingHints) , "CompressionFormat" :: NullOrUndefined (CompressionFormat) , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (S3BackupMode) , "S3BackupUpdate" :: NullOrUndefined (S3DestinationUpdate) } ) -> ExtendedS3DestinationUpdate
-newExtendedS3DestinationUpdate'  customize = (ExtendedS3DestinationUpdate <<< customize) { "BucketARN": (NullOrUndefined Nothing), "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "CompressionFormat": (NullOrUndefined Nothing), "EncryptionConfiguration": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing), "S3BackupUpdate": (NullOrUndefined Nothing) }
+newExtendedS3DestinationUpdate' :: ( { "RoleARN" :: Maybe (RoleARN) , "BucketARN" :: Maybe (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: Maybe (BufferingHints) , "CompressionFormat" :: Maybe (CompressionFormat) , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (S3BackupMode) , "S3BackupUpdate" :: Maybe (S3DestinationUpdate) } -> {"RoleARN" :: Maybe (RoleARN) , "BucketARN" :: Maybe (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: Maybe (BufferingHints) , "CompressionFormat" :: Maybe (CompressionFormat) , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (S3BackupMode) , "S3BackupUpdate" :: Maybe (S3DestinationUpdate) } ) -> ExtendedS3DestinationUpdate
+newExtendedS3DestinationUpdate'  customize = (ExtendedS3DestinationUpdate <<< customize) { "BucketARN": Nothing, "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "CompressionFormat": Nothing, "EncryptionConfiguration": Nothing, "Prefix": Nothing, "ProcessingConfiguration": Nothing, "RoleARN": Nothing, "S3BackupMode": Nothing, "S3BackupUpdate": Nothing }
 
 
 
@@ -836,7 +835,7 @@ instance encodeIntervalInSeconds :: Encode IntervalInSeconds where encode = gene
 
 -- | <p>The specified input parameter has a value that is not valid.</p>
 newtype InvalidArgumentException = InvalidArgumentException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeInvalidArgumentException :: Newtype InvalidArgumentException _
 derive instance repGenericInvalidArgumentException :: Generic InvalidArgumentException _
@@ -846,12 +845,12 @@ instance encodeInvalidArgumentException :: Encode InvalidArgumentException where
 
 -- | Constructs InvalidArgumentException from required parameters
 newInvalidArgumentException :: InvalidArgumentException
-newInvalidArgumentException  = InvalidArgumentException { "message": (NullOrUndefined Nothing) }
+newInvalidArgumentException  = InvalidArgumentException { "message": Nothing }
 
 -- | Constructs InvalidArgumentException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidArgumentException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> InvalidArgumentException
-newInvalidArgumentException'  customize = (InvalidArgumentException <<< customize) { "message": (NullOrUndefined Nothing) }
+newInvalidArgumentException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> InvalidArgumentException
+newInvalidArgumentException'  customize = (InvalidArgumentException <<< customize) { "message": Nothing }
 
 
 
@@ -909,9 +908,9 @@ newKinesisStreamSourceConfiguration' _KinesisStreamARN _RoleARN customize = (Kin
 
 -- | <p>Details about a Kinesis stream used as the source for a Kinesis Firehose delivery stream.</p>
 newtype KinesisStreamSourceDescription = KinesisStreamSourceDescription 
-  { "KinesisStreamARN" :: NullOrUndefined (KinesisStreamARN)
-  , "RoleARN" :: NullOrUndefined (RoleARN)
-  , "DeliveryStartTimestamp" :: NullOrUndefined (DeliveryStartTimestamp)
+  { "KinesisStreamARN" :: Maybe (KinesisStreamARN)
+  , "RoleARN" :: Maybe (RoleARN)
+  , "DeliveryStartTimestamp" :: Maybe (DeliveryStartTimestamp)
   }
 derive instance newtypeKinesisStreamSourceDescription :: Newtype KinesisStreamSourceDescription _
 derive instance repGenericKinesisStreamSourceDescription :: Generic KinesisStreamSourceDescription _
@@ -921,18 +920,18 @@ instance encodeKinesisStreamSourceDescription :: Encode KinesisStreamSourceDescr
 
 -- | Constructs KinesisStreamSourceDescription from required parameters
 newKinesisStreamSourceDescription :: KinesisStreamSourceDescription
-newKinesisStreamSourceDescription  = KinesisStreamSourceDescription { "DeliveryStartTimestamp": (NullOrUndefined Nothing), "KinesisStreamARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newKinesisStreamSourceDescription  = KinesisStreamSourceDescription { "DeliveryStartTimestamp": Nothing, "KinesisStreamARN": Nothing, "RoleARN": Nothing }
 
 -- | Constructs KinesisStreamSourceDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKinesisStreamSourceDescription' :: ( { "KinesisStreamARN" :: NullOrUndefined (KinesisStreamARN) , "RoleARN" :: NullOrUndefined (RoleARN) , "DeliveryStartTimestamp" :: NullOrUndefined (DeliveryStartTimestamp) } -> {"KinesisStreamARN" :: NullOrUndefined (KinesisStreamARN) , "RoleARN" :: NullOrUndefined (RoleARN) , "DeliveryStartTimestamp" :: NullOrUndefined (DeliveryStartTimestamp) } ) -> KinesisStreamSourceDescription
-newKinesisStreamSourceDescription'  customize = (KinesisStreamSourceDescription <<< customize) { "DeliveryStartTimestamp": (NullOrUndefined Nothing), "KinesisStreamARN": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newKinesisStreamSourceDescription' :: ( { "KinesisStreamARN" :: Maybe (KinesisStreamARN) , "RoleARN" :: Maybe (RoleARN) , "DeliveryStartTimestamp" :: Maybe (DeliveryStartTimestamp) } -> {"KinesisStreamARN" :: Maybe (KinesisStreamARN) , "RoleARN" :: Maybe (RoleARN) , "DeliveryStartTimestamp" :: Maybe (DeliveryStartTimestamp) } ) -> KinesisStreamSourceDescription
+newKinesisStreamSourceDescription'  customize = (KinesisStreamSourceDescription <<< customize) { "DeliveryStartTimestamp": Nothing, "KinesisStreamARN": Nothing, "RoleARN": Nothing }
 
 
 
 -- | <p>You have already reached the limit for a requested resource.</p>
 newtype LimitExceededException = LimitExceededException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 derive instance repGenericLimitExceededException :: Generic LimitExceededException _
@@ -942,19 +941,19 @@ instance encodeLimitExceededException :: Encode LimitExceededException where enc
 
 -- | Constructs LimitExceededException from required parameters
 newLimitExceededException :: LimitExceededException
-newLimitExceededException  = LimitExceededException { "message": (NullOrUndefined Nothing) }
+newLimitExceededException  = LimitExceededException { "message": Nothing }
 
 -- | Constructs LimitExceededException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLimitExceededException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> LimitExceededException
-newLimitExceededException'  customize = (LimitExceededException <<< customize) { "message": (NullOrUndefined Nothing) }
+newLimitExceededException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> LimitExceededException
+newLimitExceededException'  customize = (LimitExceededException <<< customize) { "message": Nothing }
 
 
 
 newtype ListDeliveryStreamsInput = ListDeliveryStreamsInput 
-  { "Limit" :: NullOrUndefined (ListDeliveryStreamsInputLimit)
-  , "DeliveryStreamType" :: NullOrUndefined (DeliveryStreamType)
-  , "ExclusiveStartDeliveryStreamName" :: NullOrUndefined (DeliveryStreamName)
+  { "Limit" :: Maybe (ListDeliveryStreamsInputLimit)
+  , "DeliveryStreamType" :: Maybe (DeliveryStreamType)
+  , "ExclusiveStartDeliveryStreamName" :: Maybe (DeliveryStreamName)
   }
 derive instance newtypeListDeliveryStreamsInput :: Newtype ListDeliveryStreamsInput _
 derive instance repGenericListDeliveryStreamsInput :: Generic ListDeliveryStreamsInput _
@@ -964,12 +963,12 @@ instance encodeListDeliveryStreamsInput :: Encode ListDeliveryStreamsInput where
 
 -- | Constructs ListDeliveryStreamsInput from required parameters
 newListDeliveryStreamsInput :: ListDeliveryStreamsInput
-newListDeliveryStreamsInput  = ListDeliveryStreamsInput { "DeliveryStreamType": (NullOrUndefined Nothing), "ExclusiveStartDeliveryStreamName": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing) }
+newListDeliveryStreamsInput  = ListDeliveryStreamsInput { "DeliveryStreamType": Nothing, "ExclusiveStartDeliveryStreamName": Nothing, "Limit": Nothing }
 
 -- | Constructs ListDeliveryStreamsInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListDeliveryStreamsInput' :: ( { "Limit" :: NullOrUndefined (ListDeliveryStreamsInputLimit) , "DeliveryStreamType" :: NullOrUndefined (DeliveryStreamType) , "ExclusiveStartDeliveryStreamName" :: NullOrUndefined (DeliveryStreamName) } -> {"Limit" :: NullOrUndefined (ListDeliveryStreamsInputLimit) , "DeliveryStreamType" :: NullOrUndefined (DeliveryStreamType) , "ExclusiveStartDeliveryStreamName" :: NullOrUndefined (DeliveryStreamName) } ) -> ListDeliveryStreamsInput
-newListDeliveryStreamsInput'  customize = (ListDeliveryStreamsInput <<< customize) { "DeliveryStreamType": (NullOrUndefined Nothing), "ExclusiveStartDeliveryStreamName": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing) }
+newListDeliveryStreamsInput' :: ( { "Limit" :: Maybe (ListDeliveryStreamsInputLimit) , "DeliveryStreamType" :: Maybe (DeliveryStreamType) , "ExclusiveStartDeliveryStreamName" :: Maybe (DeliveryStreamName) } -> {"Limit" :: Maybe (ListDeliveryStreamsInputLimit) , "DeliveryStreamType" :: Maybe (DeliveryStreamType) , "ExclusiveStartDeliveryStreamName" :: Maybe (DeliveryStreamName) } ) -> ListDeliveryStreamsInput
+newListDeliveryStreamsInput'  customize = (ListDeliveryStreamsInput <<< customize) { "DeliveryStreamType": Nothing, "ExclusiveStartDeliveryStreamName": Nothing, "Limit": Nothing }
 
 
 
@@ -1059,8 +1058,8 @@ instance encodePrefix :: Encode Prefix where encode = genericEncode options
 
 -- | <p>Describes a data processing configuration.</p>
 newtype ProcessingConfiguration = ProcessingConfiguration 
-  { "Enabled" :: NullOrUndefined (BooleanObject)
-  , "Processors" :: NullOrUndefined (ProcessorList)
+  { "Enabled" :: Maybe (BooleanObject)
+  , "Processors" :: Maybe (ProcessorList)
   }
 derive instance newtypeProcessingConfiguration :: Newtype ProcessingConfiguration _
 derive instance repGenericProcessingConfiguration :: Generic ProcessingConfiguration _
@@ -1070,19 +1069,19 @@ instance encodeProcessingConfiguration :: Encode ProcessingConfiguration where e
 
 -- | Constructs ProcessingConfiguration from required parameters
 newProcessingConfiguration :: ProcessingConfiguration
-newProcessingConfiguration  = ProcessingConfiguration { "Enabled": (NullOrUndefined Nothing), "Processors": (NullOrUndefined Nothing) }
+newProcessingConfiguration  = ProcessingConfiguration { "Enabled": Nothing, "Processors": Nothing }
 
 -- | Constructs ProcessingConfiguration's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newProcessingConfiguration' :: ( { "Enabled" :: NullOrUndefined (BooleanObject) , "Processors" :: NullOrUndefined (ProcessorList) } -> {"Enabled" :: NullOrUndefined (BooleanObject) , "Processors" :: NullOrUndefined (ProcessorList) } ) -> ProcessingConfiguration
-newProcessingConfiguration'  customize = (ProcessingConfiguration <<< customize) { "Enabled": (NullOrUndefined Nothing), "Processors": (NullOrUndefined Nothing) }
+newProcessingConfiguration' :: ( { "Enabled" :: Maybe (BooleanObject) , "Processors" :: Maybe (ProcessorList) } -> {"Enabled" :: Maybe (BooleanObject) , "Processors" :: Maybe (ProcessorList) } ) -> ProcessingConfiguration
+newProcessingConfiguration'  customize = (ProcessingConfiguration <<< customize) { "Enabled": Nothing, "Processors": Nothing }
 
 
 
 -- | <p>Describes a data processor.</p>
 newtype Processor = Processor 
   { "Type" :: (ProcessorType)
-  , "Parameters" :: NullOrUndefined (ProcessorParameterList)
+  , "Parameters" :: Maybe (ProcessorParameterList)
   }
 derive instance newtypeProcessor :: Newtype Processor _
 derive instance repGenericProcessor :: Generic Processor _
@@ -1092,12 +1091,12 @@ instance encodeProcessor :: Encode Processor where encode = genericEncode option
 
 -- | Constructs Processor from required parameters
 newProcessor :: ProcessorType -> Processor
-newProcessor _Type = Processor { "Type": _Type, "Parameters": (NullOrUndefined Nothing) }
+newProcessor _Type = Processor { "Type": _Type, "Parameters": Nothing }
 
 -- | Constructs Processor's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newProcessor' :: ProcessorType -> ( { "Type" :: (ProcessorType) , "Parameters" :: NullOrUndefined (ProcessorParameterList) } -> {"Type" :: (ProcessorType) , "Parameters" :: NullOrUndefined (ProcessorParameterList) } ) -> Processor
-newProcessor' _Type customize = (Processor <<< customize) { "Type": _Type, "Parameters": (NullOrUndefined Nothing) }
+newProcessor' :: ProcessorType -> ( { "Type" :: (ProcessorType) , "Parameters" :: Maybe (ProcessorParameterList) } -> {"Type" :: (ProcessorType) , "Parameters" :: Maybe (ProcessorParameterList) } ) -> Processor
+newProcessor' _Type customize = (Processor <<< customize) { "Type": _Type, "Parameters": Nothing }
 
 
 
@@ -1221,9 +1220,9 @@ instance encodePutRecordBatchRequestEntryList :: Encode PutRecordBatchRequestEnt
 
 -- | <p>Contains the result for an individual record from a <a>PutRecordBatch</a> request. If the record is successfully added to your delivery stream, it receives a record ID. If the record fails to be added to your delivery stream, the result includes an error code and an error message.</p>
 newtype PutRecordBatchResponseEntry = PutRecordBatchResponseEntry 
-  { "RecordId" :: NullOrUndefined (PutResponseRecordId)
-  , "ErrorCode" :: NullOrUndefined (ErrorCode)
-  , "ErrorMessage" :: NullOrUndefined (ErrorMessage)
+  { "RecordId" :: Maybe (PutResponseRecordId)
+  , "ErrorCode" :: Maybe (ErrorCode)
+  , "ErrorMessage" :: Maybe (ErrorMessage)
   }
 derive instance newtypePutRecordBatchResponseEntry :: Newtype PutRecordBatchResponseEntry _
 derive instance repGenericPutRecordBatchResponseEntry :: Generic PutRecordBatchResponseEntry _
@@ -1233,12 +1232,12 @@ instance encodePutRecordBatchResponseEntry :: Encode PutRecordBatchResponseEntry
 
 -- | Constructs PutRecordBatchResponseEntry from required parameters
 newPutRecordBatchResponseEntry :: PutRecordBatchResponseEntry
-newPutRecordBatchResponseEntry  = PutRecordBatchResponseEntry { "ErrorCode": (NullOrUndefined Nothing), "ErrorMessage": (NullOrUndefined Nothing), "RecordId": (NullOrUndefined Nothing) }
+newPutRecordBatchResponseEntry  = PutRecordBatchResponseEntry { "ErrorCode": Nothing, "ErrorMessage": Nothing, "RecordId": Nothing }
 
 -- | Constructs PutRecordBatchResponseEntry's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPutRecordBatchResponseEntry' :: ( { "RecordId" :: NullOrUndefined (PutResponseRecordId) , "ErrorCode" :: NullOrUndefined (ErrorCode) , "ErrorMessage" :: NullOrUndefined (ErrorMessage) } -> {"RecordId" :: NullOrUndefined (PutResponseRecordId) , "ErrorCode" :: NullOrUndefined (ErrorCode) , "ErrorMessage" :: NullOrUndefined (ErrorMessage) } ) -> PutRecordBatchResponseEntry
-newPutRecordBatchResponseEntry'  customize = (PutRecordBatchResponseEntry <<< customize) { "ErrorCode": (NullOrUndefined Nothing), "ErrorMessage": (NullOrUndefined Nothing), "RecordId": (NullOrUndefined Nothing) }
+newPutRecordBatchResponseEntry' :: ( { "RecordId" :: Maybe (PutResponseRecordId) , "ErrorCode" :: Maybe (ErrorCode) , "ErrorMessage" :: Maybe (ErrorMessage) } -> {"RecordId" :: Maybe (PutResponseRecordId) , "ErrorCode" :: Maybe (ErrorCode) , "ErrorMessage" :: Maybe (ErrorMessage) } ) -> PutRecordBatchResponseEntry
+newPutRecordBatchResponseEntry'  customize = (PutRecordBatchResponseEntry <<< customize) { "ErrorCode": Nothing, "ErrorMessage": Nothing, "RecordId": Nothing }
 
 
 
@@ -1329,12 +1328,12 @@ newtype RedshiftDestinationConfiguration = RedshiftDestinationConfiguration
   , "CopyCommand" :: (CopyCommand)
   , "Username" :: (Username)
   , "Password" :: (Password)
-  , "RetryOptions" :: NullOrUndefined (RedshiftRetryOptions)
+  , "RetryOptions" :: Maybe (RedshiftRetryOptions)
   , "S3Configuration" :: (S3DestinationConfiguration)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "S3BackupMode" :: NullOrUndefined (RedshiftS3BackupMode)
-  , "S3BackupConfiguration" :: NullOrUndefined (S3DestinationConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "S3BackupMode" :: Maybe (RedshiftS3BackupMode)
+  , "S3BackupConfiguration" :: Maybe (S3DestinationConfiguration)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeRedshiftDestinationConfiguration :: Newtype RedshiftDestinationConfiguration _
 derive instance repGenericRedshiftDestinationConfiguration :: Generic RedshiftDestinationConfiguration _
@@ -1344,12 +1343,12 @@ instance encodeRedshiftDestinationConfiguration :: Encode RedshiftDestinationCon
 
 -- | Constructs RedshiftDestinationConfiguration from required parameters
 newRedshiftDestinationConfiguration :: ClusterJDBCURL -> CopyCommand -> Password -> RoleARN -> S3DestinationConfiguration -> Username -> RedshiftDestinationConfiguration
-newRedshiftDestinationConfiguration _ClusterJDBCURL _CopyCommand _Password _RoleARN _S3Configuration _Username = RedshiftDestinationConfiguration { "ClusterJDBCURL": _ClusterJDBCURL, "CopyCommand": _CopyCommand, "Password": _Password, "RoleARN": _RoleARN, "S3Configuration": _S3Configuration, "Username": _Username, "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupConfiguration": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newRedshiftDestinationConfiguration _ClusterJDBCURL _CopyCommand _Password _RoleARN _S3Configuration _Username = RedshiftDestinationConfiguration { "ClusterJDBCURL": _ClusterJDBCURL, "CopyCommand": _CopyCommand, "Password": _Password, "RoleARN": _RoleARN, "S3Configuration": _S3Configuration, "Username": _Username, "CloudWatchLoggingOptions": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupConfiguration": Nothing, "S3BackupMode": Nothing }
 
 -- | Constructs RedshiftDestinationConfiguration's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRedshiftDestinationConfiguration' :: ClusterJDBCURL -> CopyCommand -> Password -> RoleARN -> S3DestinationConfiguration -> Username -> ( { "RoleARN" :: (RoleARN) , "ClusterJDBCURL" :: (ClusterJDBCURL) , "CopyCommand" :: (CopyCommand) , "Username" :: (Username) , "Password" :: (Password) , "RetryOptions" :: NullOrUndefined (RedshiftRetryOptions) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (RedshiftS3BackupMode) , "S3BackupConfiguration" :: NullOrUndefined (S3DestinationConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"RoleARN" :: (RoleARN) , "ClusterJDBCURL" :: (ClusterJDBCURL) , "CopyCommand" :: (CopyCommand) , "Username" :: (Username) , "Password" :: (Password) , "RetryOptions" :: NullOrUndefined (RedshiftRetryOptions) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (RedshiftS3BackupMode) , "S3BackupConfiguration" :: NullOrUndefined (S3DestinationConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> RedshiftDestinationConfiguration
-newRedshiftDestinationConfiguration' _ClusterJDBCURL _CopyCommand _Password _RoleARN _S3Configuration _Username customize = (RedshiftDestinationConfiguration <<< customize) { "ClusterJDBCURL": _ClusterJDBCURL, "CopyCommand": _CopyCommand, "Password": _Password, "RoleARN": _RoleARN, "S3Configuration": _S3Configuration, "Username": _Username, "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupConfiguration": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newRedshiftDestinationConfiguration' :: ClusterJDBCURL -> CopyCommand -> Password -> RoleARN -> S3DestinationConfiguration -> Username -> ( { "RoleARN" :: (RoleARN) , "ClusterJDBCURL" :: (ClusterJDBCURL) , "CopyCommand" :: (CopyCommand) , "Username" :: (Username) , "Password" :: (Password) , "RetryOptions" :: Maybe (RedshiftRetryOptions) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (RedshiftS3BackupMode) , "S3BackupConfiguration" :: Maybe (S3DestinationConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"RoleARN" :: (RoleARN) , "ClusterJDBCURL" :: (ClusterJDBCURL) , "CopyCommand" :: (CopyCommand) , "Username" :: (Username) , "Password" :: (Password) , "RetryOptions" :: Maybe (RedshiftRetryOptions) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (RedshiftS3BackupMode) , "S3BackupConfiguration" :: Maybe (S3DestinationConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> RedshiftDestinationConfiguration
+newRedshiftDestinationConfiguration' _ClusterJDBCURL _CopyCommand _Password _RoleARN _S3Configuration _Username customize = (RedshiftDestinationConfiguration <<< customize) { "ClusterJDBCURL": _ClusterJDBCURL, "CopyCommand": _CopyCommand, "Password": _Password, "RoleARN": _RoleARN, "S3Configuration": _S3Configuration, "Username": _Username, "CloudWatchLoggingOptions": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupConfiguration": Nothing, "S3BackupMode": Nothing }
 
 
 
@@ -1359,12 +1358,12 @@ newtype RedshiftDestinationDescription = RedshiftDestinationDescription
   , "ClusterJDBCURL" :: (ClusterJDBCURL)
   , "CopyCommand" :: (CopyCommand)
   , "Username" :: (Username)
-  , "RetryOptions" :: NullOrUndefined (RedshiftRetryOptions)
+  , "RetryOptions" :: Maybe (RedshiftRetryOptions)
   , "S3DestinationDescription" :: (S3DestinationDescription)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "S3BackupMode" :: NullOrUndefined (RedshiftS3BackupMode)
-  , "S3BackupDescription" :: NullOrUndefined (S3DestinationDescription)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "S3BackupMode" :: Maybe (RedshiftS3BackupMode)
+  , "S3BackupDescription" :: Maybe (S3DestinationDescription)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeRedshiftDestinationDescription :: Newtype RedshiftDestinationDescription _
 derive instance repGenericRedshiftDestinationDescription :: Generic RedshiftDestinationDescription _
@@ -1374,28 +1373,28 @@ instance encodeRedshiftDestinationDescription :: Encode RedshiftDestinationDescr
 
 -- | Constructs RedshiftDestinationDescription from required parameters
 newRedshiftDestinationDescription :: ClusterJDBCURL -> CopyCommand -> RoleARN -> S3DestinationDescription -> Username -> RedshiftDestinationDescription
-newRedshiftDestinationDescription _ClusterJDBCURL _CopyCommand _RoleARN _S3DestinationDescription _Username = RedshiftDestinationDescription { "ClusterJDBCURL": _ClusterJDBCURL, "CopyCommand": _CopyCommand, "RoleARN": _RoleARN, "S3DestinationDescription": _S3DestinationDescription, "Username": _Username, "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupDescription": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newRedshiftDestinationDescription _ClusterJDBCURL _CopyCommand _RoleARN _S3DestinationDescription _Username = RedshiftDestinationDescription { "ClusterJDBCURL": _ClusterJDBCURL, "CopyCommand": _CopyCommand, "RoleARN": _RoleARN, "S3DestinationDescription": _S3DestinationDescription, "Username": _Username, "CloudWatchLoggingOptions": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupDescription": Nothing, "S3BackupMode": Nothing }
 
 -- | Constructs RedshiftDestinationDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRedshiftDestinationDescription' :: ClusterJDBCURL -> CopyCommand -> RoleARN -> S3DestinationDescription -> Username -> ( { "RoleARN" :: (RoleARN) , "ClusterJDBCURL" :: (ClusterJDBCURL) , "CopyCommand" :: (CopyCommand) , "Username" :: (Username) , "RetryOptions" :: NullOrUndefined (RedshiftRetryOptions) , "S3DestinationDescription" :: (S3DestinationDescription) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (RedshiftS3BackupMode) , "S3BackupDescription" :: NullOrUndefined (S3DestinationDescription) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"RoleARN" :: (RoleARN) , "ClusterJDBCURL" :: (ClusterJDBCURL) , "CopyCommand" :: (CopyCommand) , "Username" :: (Username) , "RetryOptions" :: NullOrUndefined (RedshiftRetryOptions) , "S3DestinationDescription" :: (S3DestinationDescription) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (RedshiftS3BackupMode) , "S3BackupDescription" :: NullOrUndefined (S3DestinationDescription) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> RedshiftDestinationDescription
-newRedshiftDestinationDescription' _ClusterJDBCURL _CopyCommand _RoleARN _S3DestinationDescription _Username customize = (RedshiftDestinationDescription <<< customize) { "ClusterJDBCURL": _ClusterJDBCURL, "CopyCommand": _CopyCommand, "RoleARN": _RoleARN, "S3DestinationDescription": _S3DestinationDescription, "Username": _Username, "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupDescription": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newRedshiftDestinationDescription' :: ClusterJDBCURL -> CopyCommand -> RoleARN -> S3DestinationDescription -> Username -> ( { "RoleARN" :: (RoleARN) , "ClusterJDBCURL" :: (ClusterJDBCURL) , "CopyCommand" :: (CopyCommand) , "Username" :: (Username) , "RetryOptions" :: Maybe (RedshiftRetryOptions) , "S3DestinationDescription" :: (S3DestinationDescription) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (RedshiftS3BackupMode) , "S3BackupDescription" :: Maybe (S3DestinationDescription) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"RoleARN" :: (RoleARN) , "ClusterJDBCURL" :: (ClusterJDBCURL) , "CopyCommand" :: (CopyCommand) , "Username" :: (Username) , "RetryOptions" :: Maybe (RedshiftRetryOptions) , "S3DestinationDescription" :: (S3DestinationDescription) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (RedshiftS3BackupMode) , "S3BackupDescription" :: Maybe (S3DestinationDescription) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> RedshiftDestinationDescription
+newRedshiftDestinationDescription' _ClusterJDBCURL _CopyCommand _RoleARN _S3DestinationDescription _Username customize = (RedshiftDestinationDescription <<< customize) { "ClusterJDBCURL": _ClusterJDBCURL, "CopyCommand": _CopyCommand, "RoleARN": _RoleARN, "S3DestinationDescription": _S3DestinationDescription, "Username": _Username, "CloudWatchLoggingOptions": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupDescription": Nothing, "S3BackupMode": Nothing }
 
 
 
 -- | <p>Describes an update for a destination in Amazon Redshift.</p>
 newtype RedshiftDestinationUpdate = RedshiftDestinationUpdate 
-  { "RoleARN" :: NullOrUndefined (RoleARN)
-  , "ClusterJDBCURL" :: NullOrUndefined (ClusterJDBCURL)
-  , "CopyCommand" :: NullOrUndefined (CopyCommand)
-  , "Username" :: NullOrUndefined (Username)
-  , "Password" :: NullOrUndefined (Password)
-  , "RetryOptions" :: NullOrUndefined (RedshiftRetryOptions)
-  , "S3Update" :: NullOrUndefined (S3DestinationUpdate)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "S3BackupMode" :: NullOrUndefined (RedshiftS3BackupMode)
-  , "S3BackupUpdate" :: NullOrUndefined (S3DestinationUpdate)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  { "RoleARN" :: Maybe (RoleARN)
+  , "ClusterJDBCURL" :: Maybe (ClusterJDBCURL)
+  , "CopyCommand" :: Maybe (CopyCommand)
+  , "Username" :: Maybe (Username)
+  , "Password" :: Maybe (Password)
+  , "RetryOptions" :: Maybe (RedshiftRetryOptions)
+  , "S3Update" :: Maybe (S3DestinationUpdate)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "S3BackupMode" :: Maybe (RedshiftS3BackupMode)
+  , "S3BackupUpdate" :: Maybe (S3DestinationUpdate)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeRedshiftDestinationUpdate :: Newtype RedshiftDestinationUpdate _
 derive instance repGenericRedshiftDestinationUpdate :: Generic RedshiftDestinationUpdate _
@@ -1405,12 +1404,12 @@ instance encodeRedshiftDestinationUpdate :: Encode RedshiftDestinationUpdate whe
 
 -- | Constructs RedshiftDestinationUpdate from required parameters
 newRedshiftDestinationUpdate :: RedshiftDestinationUpdate
-newRedshiftDestinationUpdate  = RedshiftDestinationUpdate { "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "ClusterJDBCURL": (NullOrUndefined Nothing), "CopyCommand": (NullOrUndefined Nothing), "Password": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing), "S3BackupUpdate": (NullOrUndefined Nothing), "S3Update": (NullOrUndefined Nothing), "Username": (NullOrUndefined Nothing) }
+newRedshiftDestinationUpdate  = RedshiftDestinationUpdate { "CloudWatchLoggingOptions": Nothing, "ClusterJDBCURL": Nothing, "CopyCommand": Nothing, "Password": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "RoleARN": Nothing, "S3BackupMode": Nothing, "S3BackupUpdate": Nothing, "S3Update": Nothing, "Username": Nothing }
 
 -- | Constructs RedshiftDestinationUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRedshiftDestinationUpdate' :: ( { "RoleARN" :: NullOrUndefined (RoleARN) , "ClusterJDBCURL" :: NullOrUndefined (ClusterJDBCURL) , "CopyCommand" :: NullOrUndefined (CopyCommand) , "Username" :: NullOrUndefined (Username) , "Password" :: NullOrUndefined (Password) , "RetryOptions" :: NullOrUndefined (RedshiftRetryOptions) , "S3Update" :: NullOrUndefined (S3DestinationUpdate) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (RedshiftS3BackupMode) , "S3BackupUpdate" :: NullOrUndefined (S3DestinationUpdate) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"RoleARN" :: NullOrUndefined (RoleARN) , "ClusterJDBCURL" :: NullOrUndefined (ClusterJDBCURL) , "CopyCommand" :: NullOrUndefined (CopyCommand) , "Username" :: NullOrUndefined (Username) , "Password" :: NullOrUndefined (Password) , "RetryOptions" :: NullOrUndefined (RedshiftRetryOptions) , "S3Update" :: NullOrUndefined (S3DestinationUpdate) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "S3BackupMode" :: NullOrUndefined (RedshiftS3BackupMode) , "S3BackupUpdate" :: NullOrUndefined (S3DestinationUpdate) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> RedshiftDestinationUpdate
-newRedshiftDestinationUpdate'  customize = (RedshiftDestinationUpdate <<< customize) { "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "ClusterJDBCURL": (NullOrUndefined Nothing), "CopyCommand": (NullOrUndefined Nothing), "Password": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing), "S3BackupUpdate": (NullOrUndefined Nothing), "S3Update": (NullOrUndefined Nothing), "Username": (NullOrUndefined Nothing) }
+newRedshiftDestinationUpdate' :: ( { "RoleARN" :: Maybe (RoleARN) , "ClusterJDBCURL" :: Maybe (ClusterJDBCURL) , "CopyCommand" :: Maybe (CopyCommand) , "Username" :: Maybe (Username) , "Password" :: Maybe (Password) , "RetryOptions" :: Maybe (RedshiftRetryOptions) , "S3Update" :: Maybe (S3DestinationUpdate) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (RedshiftS3BackupMode) , "S3BackupUpdate" :: Maybe (S3DestinationUpdate) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"RoleARN" :: Maybe (RoleARN) , "ClusterJDBCURL" :: Maybe (ClusterJDBCURL) , "CopyCommand" :: Maybe (CopyCommand) , "Username" :: Maybe (Username) , "Password" :: Maybe (Password) , "RetryOptions" :: Maybe (RedshiftRetryOptions) , "S3Update" :: Maybe (S3DestinationUpdate) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "S3BackupMode" :: Maybe (RedshiftS3BackupMode) , "S3BackupUpdate" :: Maybe (S3DestinationUpdate) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> RedshiftDestinationUpdate
+newRedshiftDestinationUpdate'  customize = (RedshiftDestinationUpdate <<< customize) { "CloudWatchLoggingOptions": Nothing, "ClusterJDBCURL": Nothing, "CopyCommand": Nothing, "Password": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "RoleARN": Nothing, "S3BackupMode": Nothing, "S3BackupUpdate": Nothing, "S3Update": Nothing, "Username": Nothing }
 
 
 
@@ -1425,7 +1424,7 @@ instance encodeRedshiftRetryDurationInSeconds :: Encode RedshiftRetryDurationInS
 
 -- | <p>Configures retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon Redshift.</p>
 newtype RedshiftRetryOptions = RedshiftRetryOptions 
-  { "DurationInSeconds" :: NullOrUndefined (RedshiftRetryDurationInSeconds)
+  { "DurationInSeconds" :: Maybe (RedshiftRetryDurationInSeconds)
   }
 derive instance newtypeRedshiftRetryOptions :: Newtype RedshiftRetryOptions _
 derive instance repGenericRedshiftRetryOptions :: Generic RedshiftRetryOptions _
@@ -1435,12 +1434,12 @@ instance encodeRedshiftRetryOptions :: Encode RedshiftRetryOptions where encode 
 
 -- | Constructs RedshiftRetryOptions from required parameters
 newRedshiftRetryOptions :: RedshiftRetryOptions
-newRedshiftRetryOptions  = RedshiftRetryOptions { "DurationInSeconds": (NullOrUndefined Nothing) }
+newRedshiftRetryOptions  = RedshiftRetryOptions { "DurationInSeconds": Nothing }
 
 -- | Constructs RedshiftRetryOptions's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRedshiftRetryOptions' :: ( { "DurationInSeconds" :: NullOrUndefined (RedshiftRetryDurationInSeconds) } -> {"DurationInSeconds" :: NullOrUndefined (RedshiftRetryDurationInSeconds) } ) -> RedshiftRetryOptions
-newRedshiftRetryOptions'  customize = (RedshiftRetryOptions <<< customize) { "DurationInSeconds": (NullOrUndefined Nothing) }
+newRedshiftRetryOptions' :: ( { "DurationInSeconds" :: Maybe (RedshiftRetryDurationInSeconds) } -> {"DurationInSeconds" :: Maybe (RedshiftRetryDurationInSeconds) } ) -> RedshiftRetryOptions
+newRedshiftRetryOptions'  customize = (RedshiftRetryOptions <<< customize) { "DurationInSeconds": Nothing }
 
 
 
@@ -1455,7 +1454,7 @@ instance encodeRedshiftS3BackupMode :: Encode RedshiftS3BackupMode where encode 
 
 -- | <p>The resource is already in use and not available for this operation.</p>
 newtype ResourceInUseException = ResourceInUseException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeResourceInUseException :: Newtype ResourceInUseException _
 derive instance repGenericResourceInUseException :: Generic ResourceInUseException _
@@ -1465,18 +1464,18 @@ instance encodeResourceInUseException :: Encode ResourceInUseException where enc
 
 -- | Constructs ResourceInUseException from required parameters
 newResourceInUseException :: ResourceInUseException
-newResourceInUseException  = ResourceInUseException { "message": (NullOrUndefined Nothing) }
+newResourceInUseException  = ResourceInUseException { "message": Nothing }
 
 -- | Constructs ResourceInUseException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceInUseException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ResourceInUseException
-newResourceInUseException'  customize = (ResourceInUseException <<< customize) { "message": (NullOrUndefined Nothing) }
+newResourceInUseException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ResourceInUseException
+newResourceInUseException'  customize = (ResourceInUseException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>The specified resource could not be found.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 derive instance repGenericResourceNotFoundException :: Generic ResourceNotFoundException _
@@ -1486,12 +1485,12 @@ instance encodeResourceNotFoundException :: Encode ResourceNotFoundException whe
 
 -- | Constructs ResourceNotFoundException from required parameters
 newResourceNotFoundException :: ResourceNotFoundException
-newResourceNotFoundException  = ResourceNotFoundException { "message": (NullOrUndefined Nothing) }
+newResourceNotFoundException  = ResourceNotFoundException { "message": Nothing }
 
 -- | Constructs ResourceNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceNotFoundException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ResourceNotFoundException
-newResourceNotFoundException'  customize = (ResourceNotFoundException <<< customize) { "message": (NullOrUndefined Nothing) }
+newResourceNotFoundException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ResourceNotFoundException
+newResourceNotFoundException'  customize = (ResourceNotFoundException <<< customize) { "message": Nothing }
 
 
 
@@ -1517,11 +1516,11 @@ instance encodeS3BackupMode :: Encode S3BackupMode where encode = genericEncode 
 newtype S3DestinationConfiguration = S3DestinationConfiguration 
   { "RoleARN" :: (RoleARN)
   , "BucketARN" :: (BucketARN)
-  , "Prefix" :: NullOrUndefined (Prefix)
-  , "BufferingHints" :: NullOrUndefined (BufferingHints)
-  , "CompressionFormat" :: NullOrUndefined (CompressionFormat)
-  , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  , "Prefix" :: Maybe (Prefix)
+  , "BufferingHints" :: Maybe (BufferingHints)
+  , "CompressionFormat" :: Maybe (CompressionFormat)
+  , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeS3DestinationConfiguration :: Newtype S3DestinationConfiguration _
 derive instance repGenericS3DestinationConfiguration :: Generic S3DestinationConfiguration _
@@ -1531,12 +1530,12 @@ instance encodeS3DestinationConfiguration :: Encode S3DestinationConfiguration w
 
 -- | Constructs S3DestinationConfiguration from required parameters
 newS3DestinationConfiguration :: BucketARN -> RoleARN -> S3DestinationConfiguration
-newS3DestinationConfiguration _BucketARN _RoleARN = S3DestinationConfiguration { "BucketARN": _BucketARN, "RoleARN": _RoleARN, "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "CompressionFormat": (NullOrUndefined Nothing), "EncryptionConfiguration": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing) }
+newS3DestinationConfiguration _BucketARN _RoleARN = S3DestinationConfiguration { "BucketARN": _BucketARN, "RoleARN": _RoleARN, "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "CompressionFormat": Nothing, "EncryptionConfiguration": Nothing, "Prefix": Nothing }
 
 -- | Constructs S3DestinationConfiguration's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newS3DestinationConfiguration' :: BucketARN -> RoleARN -> ( { "RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: NullOrUndefined (BufferingHints) , "CompressionFormat" :: NullOrUndefined (CompressionFormat) , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: NullOrUndefined (BufferingHints) , "CompressionFormat" :: NullOrUndefined (CompressionFormat) , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> S3DestinationConfiguration
-newS3DestinationConfiguration' _BucketARN _RoleARN customize = (S3DestinationConfiguration <<< customize) { "BucketARN": _BucketARN, "RoleARN": _RoleARN, "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "CompressionFormat": (NullOrUndefined Nothing), "EncryptionConfiguration": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing) }
+newS3DestinationConfiguration' :: BucketARN -> RoleARN -> ( { "RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: Maybe (BufferingHints) , "CompressionFormat" :: Maybe (CompressionFormat) , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: Maybe (BufferingHints) , "CompressionFormat" :: Maybe (CompressionFormat) , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> S3DestinationConfiguration
+newS3DestinationConfiguration' _BucketARN _RoleARN customize = (S3DestinationConfiguration <<< customize) { "BucketARN": _BucketARN, "RoleARN": _RoleARN, "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "CompressionFormat": Nothing, "EncryptionConfiguration": Nothing, "Prefix": Nothing }
 
 
 
@@ -1544,11 +1543,11 @@ newS3DestinationConfiguration' _BucketARN _RoleARN customize = (S3DestinationCon
 newtype S3DestinationDescription = S3DestinationDescription 
   { "RoleARN" :: (RoleARN)
   , "BucketARN" :: (BucketARN)
-  , "Prefix" :: NullOrUndefined (Prefix)
+  , "Prefix" :: Maybe (Prefix)
   , "BufferingHints" :: (BufferingHints)
   , "CompressionFormat" :: (CompressionFormat)
   , "EncryptionConfiguration" :: (EncryptionConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeS3DestinationDescription :: Newtype S3DestinationDescription _
 derive instance repGenericS3DestinationDescription :: Generic S3DestinationDescription _
@@ -1558,24 +1557,24 @@ instance encodeS3DestinationDescription :: Encode S3DestinationDescription where
 
 -- | Constructs S3DestinationDescription from required parameters
 newS3DestinationDescription :: BucketARN -> BufferingHints -> CompressionFormat -> EncryptionConfiguration -> RoleARN -> S3DestinationDescription
-newS3DestinationDescription _BucketARN _BufferingHints _CompressionFormat _EncryptionConfiguration _RoleARN = S3DestinationDescription { "BucketARN": _BucketARN, "BufferingHints": _BufferingHints, "CompressionFormat": _CompressionFormat, "EncryptionConfiguration": _EncryptionConfiguration, "RoleARN": _RoleARN, "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing) }
+newS3DestinationDescription _BucketARN _BufferingHints _CompressionFormat _EncryptionConfiguration _RoleARN = S3DestinationDescription { "BucketARN": _BucketARN, "BufferingHints": _BufferingHints, "CompressionFormat": _CompressionFormat, "EncryptionConfiguration": _EncryptionConfiguration, "RoleARN": _RoleARN, "CloudWatchLoggingOptions": Nothing, "Prefix": Nothing }
 
 -- | Constructs S3DestinationDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newS3DestinationDescription' :: BucketARN -> BufferingHints -> CompressionFormat -> EncryptionConfiguration -> RoleARN -> ( { "RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: (BufferingHints) , "CompressionFormat" :: (CompressionFormat) , "EncryptionConfiguration" :: (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: (BufferingHints) , "CompressionFormat" :: (CompressionFormat) , "EncryptionConfiguration" :: (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> S3DestinationDescription
-newS3DestinationDescription' _BucketARN _BufferingHints _CompressionFormat _EncryptionConfiguration _RoleARN customize = (S3DestinationDescription <<< customize) { "BucketARN": _BucketARN, "BufferingHints": _BufferingHints, "CompressionFormat": _CompressionFormat, "EncryptionConfiguration": _EncryptionConfiguration, "RoleARN": _RoleARN, "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing) }
+newS3DestinationDescription' :: BucketARN -> BufferingHints -> CompressionFormat -> EncryptionConfiguration -> RoleARN -> ( { "RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: (BufferingHints) , "CompressionFormat" :: (CompressionFormat) , "EncryptionConfiguration" :: (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"RoleARN" :: (RoleARN) , "BucketARN" :: (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: (BufferingHints) , "CompressionFormat" :: (CompressionFormat) , "EncryptionConfiguration" :: (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> S3DestinationDescription
+newS3DestinationDescription' _BucketARN _BufferingHints _CompressionFormat _EncryptionConfiguration _RoleARN customize = (S3DestinationDescription <<< customize) { "BucketARN": _BucketARN, "BufferingHints": _BufferingHints, "CompressionFormat": _CompressionFormat, "EncryptionConfiguration": _EncryptionConfiguration, "RoleARN": _RoleARN, "CloudWatchLoggingOptions": Nothing, "Prefix": Nothing }
 
 
 
 -- | <p>Describes an update for a destination in Amazon S3.</p>
 newtype S3DestinationUpdate = S3DestinationUpdate 
-  { "RoleARN" :: NullOrUndefined (RoleARN)
-  , "BucketARN" :: NullOrUndefined (BucketARN)
-  , "Prefix" :: NullOrUndefined (Prefix)
-  , "BufferingHints" :: NullOrUndefined (BufferingHints)
-  , "CompressionFormat" :: NullOrUndefined (CompressionFormat)
-  , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  { "RoleARN" :: Maybe (RoleARN)
+  , "BucketARN" :: Maybe (BucketARN)
+  , "Prefix" :: Maybe (Prefix)
+  , "BufferingHints" :: Maybe (BufferingHints)
+  , "CompressionFormat" :: Maybe (CompressionFormat)
+  , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeS3DestinationUpdate :: Newtype S3DestinationUpdate _
 derive instance repGenericS3DestinationUpdate :: Generic S3DestinationUpdate _
@@ -1585,18 +1584,18 @@ instance encodeS3DestinationUpdate :: Encode S3DestinationUpdate where encode = 
 
 -- | Constructs S3DestinationUpdate from required parameters
 newS3DestinationUpdate :: S3DestinationUpdate
-newS3DestinationUpdate  = S3DestinationUpdate { "BucketARN": (NullOrUndefined Nothing), "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "CompressionFormat": (NullOrUndefined Nothing), "EncryptionConfiguration": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newS3DestinationUpdate  = S3DestinationUpdate { "BucketARN": Nothing, "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "CompressionFormat": Nothing, "EncryptionConfiguration": Nothing, "Prefix": Nothing, "RoleARN": Nothing }
 
 -- | Constructs S3DestinationUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newS3DestinationUpdate' :: ( { "RoleARN" :: NullOrUndefined (RoleARN) , "BucketARN" :: NullOrUndefined (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: NullOrUndefined (BufferingHints) , "CompressionFormat" :: NullOrUndefined (CompressionFormat) , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"RoleARN" :: NullOrUndefined (RoleARN) , "BucketARN" :: NullOrUndefined (BucketARN) , "Prefix" :: NullOrUndefined (Prefix) , "BufferingHints" :: NullOrUndefined (BufferingHints) , "CompressionFormat" :: NullOrUndefined (CompressionFormat) , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> S3DestinationUpdate
-newS3DestinationUpdate'  customize = (S3DestinationUpdate <<< customize) { "BucketARN": (NullOrUndefined Nothing), "BufferingHints": (NullOrUndefined Nothing), "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "CompressionFormat": (NullOrUndefined Nothing), "EncryptionConfiguration": (NullOrUndefined Nothing), "Prefix": (NullOrUndefined Nothing), "RoleARN": (NullOrUndefined Nothing) }
+newS3DestinationUpdate' :: ( { "RoleARN" :: Maybe (RoleARN) , "BucketARN" :: Maybe (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: Maybe (BufferingHints) , "CompressionFormat" :: Maybe (CompressionFormat) , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"RoleARN" :: Maybe (RoleARN) , "BucketARN" :: Maybe (BucketARN) , "Prefix" :: Maybe (Prefix) , "BufferingHints" :: Maybe (BufferingHints) , "CompressionFormat" :: Maybe (CompressionFormat) , "EncryptionConfiguration" :: Maybe (EncryptionConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> S3DestinationUpdate
+newS3DestinationUpdate'  customize = (S3DestinationUpdate <<< customize) { "BucketARN": Nothing, "BufferingHints": Nothing, "CloudWatchLoggingOptions": Nothing, "CompressionFormat": Nothing, "EncryptionConfiguration": Nothing, "Prefix": Nothing, "RoleARN": Nothing }
 
 
 
 -- | <p>The service is unavailable, back off and retry the operation. If you continue to see the exception, throughput limits for the delivery stream may have been exceeded. For more information about limits and how to request an increase, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Firehose Limits</a>.</p>
 newtype ServiceUnavailableException = ServiceUnavailableException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeServiceUnavailableException :: Newtype ServiceUnavailableException _
 derive instance repGenericServiceUnavailableException :: Generic ServiceUnavailableException _
@@ -1606,12 +1605,12 @@ instance encodeServiceUnavailableException :: Encode ServiceUnavailableException
 
 -- | Constructs ServiceUnavailableException from required parameters
 newServiceUnavailableException :: ServiceUnavailableException
-newServiceUnavailableException  = ServiceUnavailableException { "message": (NullOrUndefined Nothing) }
+newServiceUnavailableException  = ServiceUnavailableException { "message": Nothing }
 
 -- | Constructs ServiceUnavailableException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newServiceUnavailableException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ServiceUnavailableException
-newServiceUnavailableException'  customize = (ServiceUnavailableException <<< customize) { "message": (NullOrUndefined Nothing) }
+newServiceUnavailableException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ServiceUnavailableException
+newServiceUnavailableException'  customize = (ServiceUnavailableException <<< customize) { "message": Nothing }
 
 
 
@@ -1626,7 +1625,7 @@ instance encodeSizeInMBs :: Encode SizeInMBs where encode = genericEncode option
 
 -- | <p>Details about a Kinesis stream used as the source for a Kinesis Firehose delivery stream.</p>
 newtype SourceDescription = SourceDescription 
-  { "KinesisStreamSourceDescription" :: NullOrUndefined (KinesisStreamSourceDescription)
+  { "KinesisStreamSourceDescription" :: Maybe (KinesisStreamSourceDescription)
   }
 derive instance newtypeSourceDescription :: Newtype SourceDescription _
 derive instance repGenericSourceDescription :: Generic SourceDescription _
@@ -1636,12 +1635,12 @@ instance encodeSourceDescription :: Encode SourceDescription where encode = gene
 
 -- | Constructs SourceDescription from required parameters
 newSourceDescription :: SourceDescription
-newSourceDescription  = SourceDescription { "KinesisStreamSourceDescription": (NullOrUndefined Nothing) }
+newSourceDescription  = SourceDescription { "KinesisStreamSourceDescription": Nothing }
 
 -- | Constructs SourceDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSourceDescription' :: ( { "KinesisStreamSourceDescription" :: NullOrUndefined (KinesisStreamSourceDescription) } -> {"KinesisStreamSourceDescription" :: NullOrUndefined (KinesisStreamSourceDescription) } ) -> SourceDescription
-newSourceDescription'  customize = (SourceDescription <<< customize) { "KinesisStreamSourceDescription": (NullOrUndefined Nothing) }
+newSourceDescription' :: ( { "KinesisStreamSourceDescription" :: Maybe (KinesisStreamSourceDescription) } -> {"KinesisStreamSourceDescription" :: Maybe (KinesisStreamSourceDescription) } ) -> SourceDescription
+newSourceDescription'  customize = (SourceDescription <<< customize) { "KinesisStreamSourceDescription": Nothing }
 
 
 
@@ -1650,12 +1649,12 @@ newtype SplunkDestinationConfiguration = SplunkDestinationConfiguration
   { "HECEndpoint" :: (HECEndpoint)
   , "HECEndpointType" :: (HECEndpointType)
   , "HECToken" :: (HECToken)
-  , "HECAcknowledgmentTimeoutInSeconds" :: NullOrUndefined (HECAcknowledgmentTimeoutInSeconds)
-  , "RetryOptions" :: NullOrUndefined (SplunkRetryOptions)
-  , "S3BackupMode" :: NullOrUndefined (SplunkS3BackupMode)
+  , "HECAcknowledgmentTimeoutInSeconds" :: Maybe (HECAcknowledgmentTimeoutInSeconds)
+  , "RetryOptions" :: Maybe (SplunkRetryOptions)
+  , "S3BackupMode" :: Maybe (SplunkS3BackupMode)
   , "S3Configuration" :: (S3DestinationConfiguration)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeSplunkDestinationConfiguration :: Newtype SplunkDestinationConfiguration _
 derive instance repGenericSplunkDestinationConfiguration :: Generic SplunkDestinationConfiguration _
@@ -1665,26 +1664,26 @@ instance encodeSplunkDestinationConfiguration :: Encode SplunkDestinationConfigu
 
 -- | Constructs SplunkDestinationConfiguration from required parameters
 newSplunkDestinationConfiguration :: HECEndpoint -> HECEndpointType -> HECToken -> S3DestinationConfiguration -> SplunkDestinationConfiguration
-newSplunkDestinationConfiguration _HECEndpoint _HECEndpointType _HECToken _S3Configuration = SplunkDestinationConfiguration { "HECEndpoint": _HECEndpoint, "HECEndpointType": _HECEndpointType, "HECToken": _HECToken, "S3Configuration": _S3Configuration, "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "HECAcknowledgmentTimeoutInSeconds": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newSplunkDestinationConfiguration _HECEndpoint _HECEndpointType _HECToken _S3Configuration = SplunkDestinationConfiguration { "HECEndpoint": _HECEndpoint, "HECEndpointType": _HECEndpointType, "HECToken": _HECToken, "S3Configuration": _S3Configuration, "CloudWatchLoggingOptions": Nothing, "HECAcknowledgmentTimeoutInSeconds": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupMode": Nothing }
 
 -- | Constructs SplunkDestinationConfiguration's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSplunkDestinationConfiguration' :: HECEndpoint -> HECEndpointType -> HECToken -> S3DestinationConfiguration -> ( { "HECEndpoint" :: (HECEndpoint) , "HECEndpointType" :: (HECEndpointType) , "HECToken" :: (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: NullOrUndefined (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: NullOrUndefined (SplunkRetryOptions) , "S3BackupMode" :: NullOrUndefined (SplunkS3BackupMode) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"HECEndpoint" :: (HECEndpoint) , "HECEndpointType" :: (HECEndpointType) , "HECToken" :: (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: NullOrUndefined (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: NullOrUndefined (SplunkRetryOptions) , "S3BackupMode" :: NullOrUndefined (SplunkS3BackupMode) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> SplunkDestinationConfiguration
-newSplunkDestinationConfiguration' _HECEndpoint _HECEndpointType _HECToken _S3Configuration customize = (SplunkDestinationConfiguration <<< customize) { "HECEndpoint": _HECEndpoint, "HECEndpointType": _HECEndpointType, "HECToken": _HECToken, "S3Configuration": _S3Configuration, "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "HECAcknowledgmentTimeoutInSeconds": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing) }
+newSplunkDestinationConfiguration' :: HECEndpoint -> HECEndpointType -> HECToken -> S3DestinationConfiguration -> ( { "HECEndpoint" :: (HECEndpoint) , "HECEndpointType" :: (HECEndpointType) , "HECToken" :: (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: Maybe (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: Maybe (SplunkRetryOptions) , "S3BackupMode" :: Maybe (SplunkS3BackupMode) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"HECEndpoint" :: (HECEndpoint) , "HECEndpointType" :: (HECEndpointType) , "HECToken" :: (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: Maybe (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: Maybe (SplunkRetryOptions) , "S3BackupMode" :: Maybe (SplunkS3BackupMode) , "S3Configuration" :: (S3DestinationConfiguration) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> SplunkDestinationConfiguration
+newSplunkDestinationConfiguration' _HECEndpoint _HECEndpointType _HECToken _S3Configuration customize = (SplunkDestinationConfiguration <<< customize) { "HECEndpoint": _HECEndpoint, "HECEndpointType": _HECEndpointType, "HECToken": _HECToken, "S3Configuration": _S3Configuration, "CloudWatchLoggingOptions": Nothing, "HECAcknowledgmentTimeoutInSeconds": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupMode": Nothing }
 
 
 
 -- | <p>Describes a destination in Splunk.</p>
 newtype SplunkDestinationDescription = SplunkDestinationDescription 
-  { "HECEndpoint" :: NullOrUndefined (HECEndpoint)
-  , "HECEndpointType" :: NullOrUndefined (HECEndpointType)
-  , "HECToken" :: NullOrUndefined (HECToken)
-  , "HECAcknowledgmentTimeoutInSeconds" :: NullOrUndefined (HECAcknowledgmentTimeoutInSeconds)
-  , "RetryOptions" :: NullOrUndefined (SplunkRetryOptions)
-  , "S3BackupMode" :: NullOrUndefined (SplunkS3BackupMode)
-  , "S3DestinationDescription" :: NullOrUndefined (S3DestinationDescription)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  { "HECEndpoint" :: Maybe (HECEndpoint)
+  , "HECEndpointType" :: Maybe (HECEndpointType)
+  , "HECToken" :: Maybe (HECToken)
+  , "HECAcknowledgmentTimeoutInSeconds" :: Maybe (HECAcknowledgmentTimeoutInSeconds)
+  , "RetryOptions" :: Maybe (SplunkRetryOptions)
+  , "S3BackupMode" :: Maybe (SplunkS3BackupMode)
+  , "S3DestinationDescription" :: Maybe (S3DestinationDescription)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeSplunkDestinationDescription :: Newtype SplunkDestinationDescription _
 derive instance repGenericSplunkDestinationDescription :: Generic SplunkDestinationDescription _
@@ -1694,26 +1693,26 @@ instance encodeSplunkDestinationDescription :: Encode SplunkDestinationDescripti
 
 -- | Constructs SplunkDestinationDescription from required parameters
 newSplunkDestinationDescription :: SplunkDestinationDescription
-newSplunkDestinationDescription  = SplunkDestinationDescription { "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "HECAcknowledgmentTimeoutInSeconds": (NullOrUndefined Nothing), "HECEndpoint": (NullOrUndefined Nothing), "HECEndpointType": (NullOrUndefined Nothing), "HECToken": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing), "S3DestinationDescription": (NullOrUndefined Nothing) }
+newSplunkDestinationDescription  = SplunkDestinationDescription { "CloudWatchLoggingOptions": Nothing, "HECAcknowledgmentTimeoutInSeconds": Nothing, "HECEndpoint": Nothing, "HECEndpointType": Nothing, "HECToken": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupMode": Nothing, "S3DestinationDescription": Nothing }
 
 -- | Constructs SplunkDestinationDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSplunkDestinationDescription' :: ( { "HECEndpoint" :: NullOrUndefined (HECEndpoint) , "HECEndpointType" :: NullOrUndefined (HECEndpointType) , "HECToken" :: NullOrUndefined (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: NullOrUndefined (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: NullOrUndefined (SplunkRetryOptions) , "S3BackupMode" :: NullOrUndefined (SplunkS3BackupMode) , "S3DestinationDescription" :: NullOrUndefined (S3DestinationDescription) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"HECEndpoint" :: NullOrUndefined (HECEndpoint) , "HECEndpointType" :: NullOrUndefined (HECEndpointType) , "HECToken" :: NullOrUndefined (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: NullOrUndefined (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: NullOrUndefined (SplunkRetryOptions) , "S3BackupMode" :: NullOrUndefined (SplunkS3BackupMode) , "S3DestinationDescription" :: NullOrUndefined (S3DestinationDescription) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> SplunkDestinationDescription
-newSplunkDestinationDescription'  customize = (SplunkDestinationDescription <<< customize) { "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "HECAcknowledgmentTimeoutInSeconds": (NullOrUndefined Nothing), "HECEndpoint": (NullOrUndefined Nothing), "HECEndpointType": (NullOrUndefined Nothing), "HECToken": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing), "S3DestinationDescription": (NullOrUndefined Nothing) }
+newSplunkDestinationDescription' :: ( { "HECEndpoint" :: Maybe (HECEndpoint) , "HECEndpointType" :: Maybe (HECEndpointType) , "HECToken" :: Maybe (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: Maybe (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: Maybe (SplunkRetryOptions) , "S3BackupMode" :: Maybe (SplunkS3BackupMode) , "S3DestinationDescription" :: Maybe (S3DestinationDescription) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"HECEndpoint" :: Maybe (HECEndpoint) , "HECEndpointType" :: Maybe (HECEndpointType) , "HECToken" :: Maybe (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: Maybe (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: Maybe (SplunkRetryOptions) , "S3BackupMode" :: Maybe (SplunkS3BackupMode) , "S3DestinationDescription" :: Maybe (S3DestinationDescription) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> SplunkDestinationDescription
+newSplunkDestinationDescription'  customize = (SplunkDestinationDescription <<< customize) { "CloudWatchLoggingOptions": Nothing, "HECAcknowledgmentTimeoutInSeconds": Nothing, "HECEndpoint": Nothing, "HECEndpointType": Nothing, "HECToken": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupMode": Nothing, "S3DestinationDescription": Nothing }
 
 
 
 -- | <p>Describes an update for a destination in Splunk.</p>
 newtype SplunkDestinationUpdate = SplunkDestinationUpdate 
-  { "HECEndpoint" :: NullOrUndefined (HECEndpoint)
-  , "HECEndpointType" :: NullOrUndefined (HECEndpointType)
-  , "HECToken" :: NullOrUndefined (HECToken)
-  , "HECAcknowledgmentTimeoutInSeconds" :: NullOrUndefined (HECAcknowledgmentTimeoutInSeconds)
-  , "RetryOptions" :: NullOrUndefined (SplunkRetryOptions)
-  , "S3BackupMode" :: NullOrUndefined (SplunkS3BackupMode)
-  , "S3Update" :: NullOrUndefined (S3DestinationUpdate)
-  , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
-  , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
+  { "HECEndpoint" :: Maybe (HECEndpoint)
+  , "HECEndpointType" :: Maybe (HECEndpointType)
+  , "HECToken" :: Maybe (HECToken)
+  , "HECAcknowledgmentTimeoutInSeconds" :: Maybe (HECAcknowledgmentTimeoutInSeconds)
+  , "RetryOptions" :: Maybe (SplunkRetryOptions)
+  , "S3BackupMode" :: Maybe (SplunkS3BackupMode)
+  , "S3Update" :: Maybe (S3DestinationUpdate)
+  , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration)
+  , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions)
   }
 derive instance newtypeSplunkDestinationUpdate :: Newtype SplunkDestinationUpdate _
 derive instance repGenericSplunkDestinationUpdate :: Generic SplunkDestinationUpdate _
@@ -1723,12 +1722,12 @@ instance encodeSplunkDestinationUpdate :: Encode SplunkDestinationUpdate where e
 
 -- | Constructs SplunkDestinationUpdate from required parameters
 newSplunkDestinationUpdate :: SplunkDestinationUpdate
-newSplunkDestinationUpdate  = SplunkDestinationUpdate { "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "HECAcknowledgmentTimeoutInSeconds": (NullOrUndefined Nothing), "HECEndpoint": (NullOrUndefined Nothing), "HECEndpointType": (NullOrUndefined Nothing), "HECToken": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing), "S3Update": (NullOrUndefined Nothing) }
+newSplunkDestinationUpdate  = SplunkDestinationUpdate { "CloudWatchLoggingOptions": Nothing, "HECAcknowledgmentTimeoutInSeconds": Nothing, "HECEndpoint": Nothing, "HECEndpointType": Nothing, "HECToken": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupMode": Nothing, "S3Update": Nothing }
 
 -- | Constructs SplunkDestinationUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSplunkDestinationUpdate' :: ( { "HECEndpoint" :: NullOrUndefined (HECEndpoint) , "HECEndpointType" :: NullOrUndefined (HECEndpointType) , "HECToken" :: NullOrUndefined (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: NullOrUndefined (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: NullOrUndefined (SplunkRetryOptions) , "S3BackupMode" :: NullOrUndefined (SplunkS3BackupMode) , "S3Update" :: NullOrUndefined (S3DestinationUpdate) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } -> {"HECEndpoint" :: NullOrUndefined (HECEndpoint) , "HECEndpointType" :: NullOrUndefined (HECEndpointType) , "HECToken" :: NullOrUndefined (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: NullOrUndefined (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: NullOrUndefined (SplunkRetryOptions) , "S3BackupMode" :: NullOrUndefined (SplunkS3BackupMode) , "S3Update" :: NullOrUndefined (S3DestinationUpdate) , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions) } ) -> SplunkDestinationUpdate
-newSplunkDestinationUpdate'  customize = (SplunkDestinationUpdate <<< customize) { "CloudWatchLoggingOptions": (NullOrUndefined Nothing), "HECAcknowledgmentTimeoutInSeconds": (NullOrUndefined Nothing), "HECEndpoint": (NullOrUndefined Nothing), "HECEndpointType": (NullOrUndefined Nothing), "HECToken": (NullOrUndefined Nothing), "ProcessingConfiguration": (NullOrUndefined Nothing), "RetryOptions": (NullOrUndefined Nothing), "S3BackupMode": (NullOrUndefined Nothing), "S3Update": (NullOrUndefined Nothing) }
+newSplunkDestinationUpdate' :: ( { "HECEndpoint" :: Maybe (HECEndpoint) , "HECEndpointType" :: Maybe (HECEndpointType) , "HECToken" :: Maybe (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: Maybe (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: Maybe (SplunkRetryOptions) , "S3BackupMode" :: Maybe (SplunkS3BackupMode) , "S3Update" :: Maybe (S3DestinationUpdate) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } -> {"HECEndpoint" :: Maybe (HECEndpoint) , "HECEndpointType" :: Maybe (HECEndpointType) , "HECToken" :: Maybe (HECToken) , "HECAcknowledgmentTimeoutInSeconds" :: Maybe (HECAcknowledgmentTimeoutInSeconds) , "RetryOptions" :: Maybe (SplunkRetryOptions) , "S3BackupMode" :: Maybe (SplunkS3BackupMode) , "S3Update" :: Maybe (S3DestinationUpdate) , "ProcessingConfiguration" :: Maybe (ProcessingConfiguration) , "CloudWatchLoggingOptions" :: Maybe (CloudWatchLoggingOptions) } ) -> SplunkDestinationUpdate
+newSplunkDestinationUpdate'  customize = (SplunkDestinationUpdate <<< customize) { "CloudWatchLoggingOptions": Nothing, "HECAcknowledgmentTimeoutInSeconds": Nothing, "HECEndpoint": Nothing, "HECEndpointType": Nothing, "HECToken": Nothing, "ProcessingConfiguration": Nothing, "RetryOptions": Nothing, "S3BackupMode": Nothing, "S3Update": Nothing }
 
 
 
@@ -1743,7 +1742,7 @@ instance encodeSplunkRetryDurationInSeconds :: Encode SplunkRetryDurationInSecon
 
 -- | <p>Configures retry behavior in case Kinesis Firehose is unable to deliver documents to Splunk or if it doesn't receive an acknowledgment from Splunk.</p>
 newtype SplunkRetryOptions = SplunkRetryOptions 
-  { "DurationInSeconds" :: NullOrUndefined (SplunkRetryDurationInSeconds)
+  { "DurationInSeconds" :: Maybe (SplunkRetryDurationInSeconds)
   }
 derive instance newtypeSplunkRetryOptions :: Newtype SplunkRetryOptions _
 derive instance repGenericSplunkRetryOptions :: Generic SplunkRetryOptions _
@@ -1753,12 +1752,12 @@ instance encodeSplunkRetryOptions :: Encode SplunkRetryOptions where encode = ge
 
 -- | Constructs SplunkRetryOptions from required parameters
 newSplunkRetryOptions :: SplunkRetryOptions
-newSplunkRetryOptions  = SplunkRetryOptions { "DurationInSeconds": (NullOrUndefined Nothing) }
+newSplunkRetryOptions  = SplunkRetryOptions { "DurationInSeconds": Nothing }
 
 -- | Constructs SplunkRetryOptions's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSplunkRetryOptions' :: ( { "DurationInSeconds" :: NullOrUndefined (SplunkRetryDurationInSeconds) } -> {"DurationInSeconds" :: NullOrUndefined (SplunkRetryDurationInSeconds) } ) -> SplunkRetryOptions
-newSplunkRetryOptions'  customize = (SplunkRetryOptions <<< customize) { "DurationInSeconds": (NullOrUndefined Nothing) }
+newSplunkRetryOptions' :: ( { "DurationInSeconds" :: Maybe (SplunkRetryDurationInSeconds) } -> {"DurationInSeconds" :: Maybe (SplunkRetryDurationInSeconds) } ) -> SplunkRetryOptions
+newSplunkRetryOptions'  customize = (SplunkRetryOptions <<< customize) { "DurationInSeconds": Nothing }
 
 
 
@@ -1775,11 +1774,11 @@ newtype UpdateDestinationInput = UpdateDestinationInput
   { "DeliveryStreamName" :: (DeliveryStreamName)
   , "CurrentDeliveryStreamVersionId" :: (DeliveryStreamVersionId)
   , "DestinationId" :: (DestinationId)
-  , "S3DestinationUpdate" :: NullOrUndefined (S3DestinationUpdate)
-  , "ExtendedS3DestinationUpdate" :: NullOrUndefined (ExtendedS3DestinationUpdate)
-  , "RedshiftDestinationUpdate" :: NullOrUndefined (RedshiftDestinationUpdate)
-  , "ElasticsearchDestinationUpdate" :: NullOrUndefined (ElasticsearchDestinationUpdate)
-  , "SplunkDestinationUpdate" :: NullOrUndefined (SplunkDestinationUpdate)
+  , "S3DestinationUpdate" :: Maybe (S3DestinationUpdate)
+  , "ExtendedS3DestinationUpdate" :: Maybe (ExtendedS3DestinationUpdate)
+  , "RedshiftDestinationUpdate" :: Maybe (RedshiftDestinationUpdate)
+  , "ElasticsearchDestinationUpdate" :: Maybe (ElasticsearchDestinationUpdate)
+  , "SplunkDestinationUpdate" :: Maybe (SplunkDestinationUpdate)
   }
 derive instance newtypeUpdateDestinationInput :: Newtype UpdateDestinationInput _
 derive instance repGenericUpdateDestinationInput :: Generic UpdateDestinationInput _
@@ -1789,12 +1788,12 @@ instance encodeUpdateDestinationInput :: Encode UpdateDestinationInput where enc
 
 -- | Constructs UpdateDestinationInput from required parameters
 newUpdateDestinationInput :: DeliveryStreamVersionId -> DeliveryStreamName -> DestinationId -> UpdateDestinationInput
-newUpdateDestinationInput _CurrentDeliveryStreamVersionId _DeliveryStreamName _DestinationId = UpdateDestinationInput { "CurrentDeliveryStreamVersionId": _CurrentDeliveryStreamVersionId, "DeliveryStreamName": _DeliveryStreamName, "DestinationId": _DestinationId, "ElasticsearchDestinationUpdate": (NullOrUndefined Nothing), "ExtendedS3DestinationUpdate": (NullOrUndefined Nothing), "RedshiftDestinationUpdate": (NullOrUndefined Nothing), "S3DestinationUpdate": (NullOrUndefined Nothing), "SplunkDestinationUpdate": (NullOrUndefined Nothing) }
+newUpdateDestinationInput _CurrentDeliveryStreamVersionId _DeliveryStreamName _DestinationId = UpdateDestinationInput { "CurrentDeliveryStreamVersionId": _CurrentDeliveryStreamVersionId, "DeliveryStreamName": _DeliveryStreamName, "DestinationId": _DestinationId, "ElasticsearchDestinationUpdate": Nothing, "ExtendedS3DestinationUpdate": Nothing, "RedshiftDestinationUpdate": Nothing, "S3DestinationUpdate": Nothing, "SplunkDestinationUpdate": Nothing }
 
 -- | Constructs UpdateDestinationInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateDestinationInput' :: DeliveryStreamVersionId -> DeliveryStreamName -> DestinationId -> ( { "DeliveryStreamName" :: (DeliveryStreamName) , "CurrentDeliveryStreamVersionId" :: (DeliveryStreamVersionId) , "DestinationId" :: (DestinationId) , "S3DestinationUpdate" :: NullOrUndefined (S3DestinationUpdate) , "ExtendedS3DestinationUpdate" :: NullOrUndefined (ExtendedS3DestinationUpdate) , "RedshiftDestinationUpdate" :: NullOrUndefined (RedshiftDestinationUpdate) , "ElasticsearchDestinationUpdate" :: NullOrUndefined (ElasticsearchDestinationUpdate) , "SplunkDestinationUpdate" :: NullOrUndefined (SplunkDestinationUpdate) } -> {"DeliveryStreamName" :: (DeliveryStreamName) , "CurrentDeliveryStreamVersionId" :: (DeliveryStreamVersionId) , "DestinationId" :: (DestinationId) , "S3DestinationUpdate" :: NullOrUndefined (S3DestinationUpdate) , "ExtendedS3DestinationUpdate" :: NullOrUndefined (ExtendedS3DestinationUpdate) , "RedshiftDestinationUpdate" :: NullOrUndefined (RedshiftDestinationUpdate) , "ElasticsearchDestinationUpdate" :: NullOrUndefined (ElasticsearchDestinationUpdate) , "SplunkDestinationUpdate" :: NullOrUndefined (SplunkDestinationUpdate) } ) -> UpdateDestinationInput
-newUpdateDestinationInput' _CurrentDeliveryStreamVersionId _DeliveryStreamName _DestinationId customize = (UpdateDestinationInput <<< customize) { "CurrentDeliveryStreamVersionId": _CurrentDeliveryStreamVersionId, "DeliveryStreamName": _DeliveryStreamName, "DestinationId": _DestinationId, "ElasticsearchDestinationUpdate": (NullOrUndefined Nothing), "ExtendedS3DestinationUpdate": (NullOrUndefined Nothing), "RedshiftDestinationUpdate": (NullOrUndefined Nothing), "S3DestinationUpdate": (NullOrUndefined Nothing), "SplunkDestinationUpdate": (NullOrUndefined Nothing) }
+newUpdateDestinationInput' :: DeliveryStreamVersionId -> DeliveryStreamName -> DestinationId -> ( { "DeliveryStreamName" :: (DeliveryStreamName) , "CurrentDeliveryStreamVersionId" :: (DeliveryStreamVersionId) , "DestinationId" :: (DestinationId) , "S3DestinationUpdate" :: Maybe (S3DestinationUpdate) , "ExtendedS3DestinationUpdate" :: Maybe (ExtendedS3DestinationUpdate) , "RedshiftDestinationUpdate" :: Maybe (RedshiftDestinationUpdate) , "ElasticsearchDestinationUpdate" :: Maybe (ElasticsearchDestinationUpdate) , "SplunkDestinationUpdate" :: Maybe (SplunkDestinationUpdate) } -> {"DeliveryStreamName" :: (DeliveryStreamName) , "CurrentDeliveryStreamVersionId" :: (DeliveryStreamVersionId) , "DestinationId" :: (DestinationId) , "S3DestinationUpdate" :: Maybe (S3DestinationUpdate) , "ExtendedS3DestinationUpdate" :: Maybe (ExtendedS3DestinationUpdate) , "RedshiftDestinationUpdate" :: Maybe (RedshiftDestinationUpdate) , "ElasticsearchDestinationUpdate" :: Maybe (ElasticsearchDestinationUpdate) , "SplunkDestinationUpdate" :: Maybe (SplunkDestinationUpdate) } ) -> UpdateDestinationInput
+newUpdateDestinationInput' _CurrentDeliveryStreamVersionId _DeliveryStreamName _DestinationId customize = (UpdateDestinationInput <<< customize) { "CurrentDeliveryStreamVersionId": _CurrentDeliveryStreamVersionId, "DeliveryStreamName": _DeliveryStreamName, "DestinationId": _DestinationId, "ElasticsearchDestinationUpdate": Nothing, "ExtendedS3DestinationUpdate": Nothing, "RedshiftDestinationUpdate": Nothing, "S3DestinationUpdate": Nothing, "SplunkDestinationUpdate": Nothing }
 
 
 
